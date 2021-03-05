@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './Authform.css'
 
-import Signup from './../../pages/Signup/Signup'
-import Login from './../../pages/Login/Login'
+import Signup from '../Signup/Signup'
+import Login from '../Login/Login'
 
 class Authform extends Component {
   state = {

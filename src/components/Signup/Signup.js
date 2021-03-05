@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { withAuth } from "./../../context/auth-context";
+import { withAuth } from "../../context/auth-context";
 
 class Signup extends Component {
   state = { username: "", email: "", password: "" };
