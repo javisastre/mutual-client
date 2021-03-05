@@ -1,7 +1,9 @@
-nav.navbar { 
+nav.navbar {
   display: flex;
   padding: 0px 20px;
-  background: #686de0; 
+  background: #2e2e2e;
+  height: 5vh;
+  color: white;
 }
 
 button.navbar-button {

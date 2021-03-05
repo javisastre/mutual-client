@@ -21,13 +21,11 @@ class App extends Component {
     return (
       <div className='container'>
         <Navbar />
-        <MainPage />
         <Switch>
-          {/* <Route exact path='/' component={MainPage} />
+          <Route exact path='/' component={MainPage} />
 
-          <AnonRoute exact path='/signup' component={Signup} />
+          {/* <AnonRoute exact path='/signup' component={Signup} />
           <AnonRoute exact path='/login' component={Login} />
-
           <PrivateRoute exact path='/private' component={Private} />  */}
         </Switch>
       </div>
