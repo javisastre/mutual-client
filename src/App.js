@@ -18,31 +18,25 @@ class App extends Component {
   state = { user: {} };
 
   componentDidMount() {
-    this.updatedData();
+
   }
 
-  updatedData = () => {
-    const newUserData = this.props.me();
-    this.setState({ user: newUserData });
-  };
+  componentDidUpdate() {
+
+  }
 
   render() {
     return (
       <div className='container'>
-        <Navbar update={this.updatedData} userData={this.state.user}/>
-
+        <Navbar />
+        <MainPage />
         <Switch>
-          <Route
-            exact
-            path='/'
-            component={MainPage}
-            update={this.updatedData}
-          />
+          {/* <Route exact path='/' component={MainPage} /> */}
 
           <AnonRoute exact path='/signup' component={Signup} />
           <AnonRoute exact path='/login' component={Login} />
 
-          <PrivateRoute exact path='/private' component={Private} />
+          {/* <PrivateRoute exact path='/private' component={Private} />  */}
         </Switch>
       </div>
     );
