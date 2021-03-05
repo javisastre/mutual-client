@@ -5,14 +5,14 @@ import { withAuth } from "./context/auth-context";
 
 // Pages
 import MainPage from "./pages/MainPage/MainPage";
-import Signup from "./pages/Signup/Signup";
-import Login from "./pages/Login/Login";
-import Private from "./pages/Private/Private";
+// import Signup from "./pages/Signup/Signup";
+// import Login from "./pages/Login/Login";
+// import Private from "./pages/Private/Private";
 
 // Components
 import Navbar from "./components/Navbar/Navbar";
-import AnonRoute from "./components/AnonRoute/AnonRoute";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+// import AnonRoute from "./components/AnonRoute/AnonRoute";
+// import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 class App extends Component {
   state = { user: {} };

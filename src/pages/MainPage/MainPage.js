@@ -1,17 +1,20 @@
 import React from "react";
 import { withAuth } from "./../../context/auth-context";
+import AlertButton from "./../../components/AlertButton/AlertButton"
+import Authform from "./../../components/Authform/Authform"
+import Netsform from "./../../components/Netsform/Netsform"
 
 function MainPage(props) {
   return (
     <div>
-      {!props.isLoggedIn ? <p>AuthForm here</p> : null}
+      {!props.isLoggedIn ? <Authform /> : null}
 
       {props.isLoggedIn && props.user.nets.length === 0 ? (
-        <p>NetForm here</p>
+        <Netsform />
       ) : null}
 
       {props.isLoggedIn && props.user.nets.length > 0 ? (
-        <p>ButtonAlert here</p>
+        <AlertButton />
       ) : null}
     </div>
   );

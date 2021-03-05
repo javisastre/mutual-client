@@ -8,7 +8,6 @@ class Signup extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, email, password } = this.state;
-
     this.props.signup(username, email, password);
   };
 
@@ -51,8 +50,6 @@ class Signup extends Component {
           <input type='submit' value='Signup' />
         </form>
 
-        <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
       </div>
     );
   }
