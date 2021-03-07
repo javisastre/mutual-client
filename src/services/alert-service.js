@@ -13,8 +13,8 @@ class AlertService {
     return pr;
   }
 
-  active() {
-    const pr = this.alert.get("/active/:alertId").then(({ data }) => data);
+  active(alertId) {
+    const pr = this.alert.get(`/active/${alertId}`).then(({ data }) => data);
     return pr;
   }
 }
