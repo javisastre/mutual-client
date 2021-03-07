@@ -12,6 +12,11 @@ class AlertService {
     const pr = this.alert.post("/create").then(({ data }) => data);
     return pr;
   }
+
+  active() {
+    const pr = this.alert.get("/active/:alertId").then(({ data }) => data);
+    return pr;
+  }
 }
 
 const alertService = new AlertService();
