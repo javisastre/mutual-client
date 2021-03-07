@@ -1,14 +1,43 @@
-nav.navbar {
+.navbar {
   display: flex;
-  padding: 0px 20px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 5vw;
   background: #2e2e2e;
   height: 8vh;
   color: white;
 }
 
-button.navbar-button {
-  padding: 5px 20px;
-  width: 100px;
-  margin: 15px 10px;
-  border-radius: 3px;
+.navbar > a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.username {
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+}
+
+.notif-num {
+  width: 4vh;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.notif-num > p {
+  margin-top: 18px;
+}
+
+.zero {
+  background-color: rgb(128, 128, 128);
+}
+
+.fas {
+  font-size: 1.3rem;
 }

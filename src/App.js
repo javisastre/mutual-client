@@ -5,14 +5,14 @@ import { withAuth } from "./context/auth-context";
 
 // Pages
 import MainPage from "./pages/MainPage/MainPage";
-// import Signup from "./pages/Signup/Signup";
-// import Login from "./pages/Login/Login";
-// import Private from "./pages/Private/Private";
+import HeatMap from "./pages/HeatMap/HeatMap";
+import Alerts from "./pages/Alerts/Alerts";
+import Profile from "./pages/Profile/Profile";
 
 // Components
 import Navbar from "./components/Navbar/Navbar";
-// import AnonRoute from "./components/AnonRoute/AnonRoute";
-// import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import AnonRoute from "./components/AnonRoute/AnonRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 class App extends Component {
   state = { user: {} };
@@ -23,10 +23,9 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route exact path='/' component={MainPage} />
-
-          {/* <AnonRoute exact path='/signup' component={Signup} />
-          <AnonRoute exact path='/login' component={Login} />
-          <PrivateRoute exact path='/private' component={Private} />  */}
+          <PrivateRoute exact path='/heatmap' component={HeatMap} />
+          <PrivateRoute exact path='/alerts' component={Alerts} />
+          <PrivateRoute exact path='/profile' component={Profile} />
         </Switch>
       </div>
     );

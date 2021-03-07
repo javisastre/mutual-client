@@ -1,3 +1,10 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .menu {
   background: #2e2e2e;
   height: 95vh;
@@ -8,4 +15,10 @@
   left: 0;
   right: 0;
   bottom: 0;
+  font-family: "Roboto", sans-serif;
+  justify-content: space-around;
+}
+
+.menu-button {
+  background-color: #2e2e2e;
 }
