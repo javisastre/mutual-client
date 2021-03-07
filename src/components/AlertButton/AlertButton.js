@@ -24,6 +24,8 @@ class AlertButton extends Component {
   }
 
 	render() {
+
+    if (this.props.user.userAlert) return <Redirect to={`/alerts/${this.props.user.userAlert._id}`} />;
     if (this.state.alertsent) return <Redirect to={`/alerts/${this.state.alertId}`} />
 
 		return (

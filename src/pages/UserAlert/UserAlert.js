@@ -1,28 +1,40 @@
 import React, { Component } from "react";
 import { withAuth } from "./../../context/auth-context";
+import { Redirect } from 'react-router-dom'
 import AlertService from "./../../services/alert-service"
+
 class UserAlert extends Component {
-
-  state = {
-    alert: {}
-  }
-
-  getActiveAlert = async () => {
-    const activeAlert = await AlertService.active(this.props.match.params.alertId)
-    console.log(activeAlert)
-    this.setState({ alert: activeAlert})
-  }
-
+	state = {
+		alert: {},
+    redirectHome: false,
+    iAmOk: false
+	};
+  
   componentDidMount() {
-    this.getActiveAlert()
-  }
-  render() {
-    // const time = String(this.state.alert.created_at)
-    // const hour = time.slice(11, 19)
-    // const day = time.slice(0, 10);
+      this.getActiveAlert();
 
-    return (
-			<div>
+  }
+
+	getActiveAlert = async () => {
+		const activeAlert = await AlertService.active(
+			this.props.match.params.alertId
+		);
+		this.setState({ alert: activeAlert, redirectHome: false, iAmOk: false });
+	};
+
+	handleCancelBtn = async () => {
+    await AlertService.delete(this.state.alert._id)
+    this.setState({ redirectHome: true });
+  };
+
+	handleFineBtn = async () => {
+    await AlertService.iamfine(this.state.alert._id);
+    this.setState({ iAmOk: true });    
+  };
+
+	render() {
+
+    const alertScreen = 	<div>
 				<h4>Alert sent at:</h4>
 				<h2>{this.state.alert.hour}</h2>
 				<h2>{this.state.alert.date}</h2>
@@ -32,11 +44,31 @@ class UserAlert extends Component {
 					return <h2 key={net._id}>{net.netname}</h2>;
 				})}
 
-				<button>Cancel, not an alert</button>
-				<button>I'm Ok, finist alert</button>
-			</div>
+				<button
+					className='cancel-alert'
+					onClick={this.handleCancelBtn}>
+					Cancel, not an alert
+				</button>
+				<button
+					className='finish-alert'
+					onClick={this.handleFineBtn}>
+					I'm Ok, finish alert
+				</button>
+			</div> 
+
+
+
+
+    const formScreen = <h1>form</h1>
+    
+    if(this.state.redirectHome) return <Redirect to="/" />
+
+		return (
+    <>
+		 { this.state.iAmOk ? formScreen : alertScreen }
+    </>
 		);
-  }
+	}
 }
 
 export default withAuth(UserAlert);
