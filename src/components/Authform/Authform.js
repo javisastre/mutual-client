@@ -29,42 +29,34 @@ class Authform extends Component {
 
   render() {
     return (
-      <div>
-        <h1>AuthFormPage</h1>
+			<div className='authform'>
+				{this.state.showSignupForm === false &&
+				this.state.showLoginFrom === false ? (
+					<div className='authbuttons'>
+						<button onClick={this.handleSignUpBtn}>Sign Up</button>
+						<button onClick={this.handleLogInBtn}>Log In</button>
+					</div>
+				) : null}
 
-        {this.state.showSignupForm === false && this.state.showLoginFrom === false
-        ? (
-          <>
-          <button onClick={this.handleSignUpBtn} >Sign Up</button>
-          <button onClick={this.handleLogInBtn} >Log In</button>
-          </>
-        )
-        : null
-        }
+				{this.state.showSignupForm ? (
+					<>
+						<Signup />
+						<button className='alreadymember' onClick={this.handleLogInBtn}>
+							Already a member? Log in
+						</button>
+					</>
+				) : null}
 
-        {this.state.showSignupForm
-        ? (
-         <> 
-          <Signup />
-          <button onClick={this.handleLogInBtn} >Already a member? Log in</button>
-         </>
-        )
-        : null
-        }
-
-        {this.state.showLoginFrom
-        ? (
-         <> 
-          <Login />
-          <button onClick={this.handleSignUpBtn} >Not a member? Sign up</button>
-         </>
-        )
-        : null
-        }
-        
-
-      </div>
-    )
+				{this.state.showLoginFrom ? (
+					<>
+						<Login />
+						<button className='alreadymember' onClick={this.handleSignUpBtn}>
+							Not a member? Sign up
+						</button>
+					</>
+				) : null}
+			</div>
+		);
   }
 }
 

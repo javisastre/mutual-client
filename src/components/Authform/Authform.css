@@ -1,0 +1,32 @@
+.authform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 95vh;
+}
+
+h1 {
+  text-align: center;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80vw;
+}
+
+.authbuttons {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8vh;
+}
+
+.alreadymember {
+  width: 60vw;
+  height: 8vh;
+  font-size: 1rem;
+  background-color: #888888;
+}

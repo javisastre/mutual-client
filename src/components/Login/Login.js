@@ -20,21 +20,30 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div>
-        <h1>Login</h1>
+			<div>
+				<h1>Login to Mutual</h1>
 
-        <form onSubmit={this.handleFormSubmit}>
-          
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
+				<form className="formInputs" onSubmit={this.handleFormSubmit}>
+					<input
+						type='text'
+						name='username'
+						value={username}
+						onChange={this.handleChange}
+						placeholder='Username'
+					/>
 
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
+					<input
+						type='password'
+						name='password'
+						value={password}
+						onChange={this.handleChange}
+						placeholder='Password'
+					/>
 
-          <input type="submit" value="Login" />
-        </form>
-      </div>
-    );
+					<button type='submit'>Login</button>
+				</form>
+			</div>
+		);
   }
 }
 
