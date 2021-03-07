@@ -4,20 +4,27 @@ import AlertButton from "./../../components/AlertButton/AlertButton"
 import Authform from "./../../components/Authform/Authform"
 import Netsform from "./../../components/Netsform/Netsform"
 
-function MainPage(props) {
-  return (
-    <div>
-      {!props.isLoggedIn ? <Authform /> : null}
+class MainPage extends React.Component {
 
-      {props.isLoggedIn && props.user.nets.length === 0 ? (
-        <Netsform />
-      ) : null}
+  componentDidMount() {
+    this.props.me()
+  }
 
-      {props.isLoggedIn && props.user.nets.length > 0 ? (
-        <AlertButton />
-      ) : null}
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        {!this.props.isLoggedIn ? <Authform /> : null}
+  
+        {this.props.isLoggedIn && this.props.user.nets.length === 0 ? (
+          <Netsform />
+        ) : null}
+  
+        {this.props.isLoggedIn && this.props.user.nets.length > 0 ? (
+          <AlertButton />
+        ) : null}
+      </div>
+    );
+  }
 }
 
 export default withAuth(MainPage);

@@ -30,5 +30,5 @@ class NetService {
   }
 }
 
-const newService = new NetService();
+const netService = new NetService();
 export default netService;
