@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import './Authform.css'
 
-import Signup from '../Signup/Signup'
-import Login from '../Login/Login'
+import Signup from './Signup/Signup'
+import Login from './Login/Login'
 
 class Authform extends Component {
   state = {
@@ -33,6 +33,7 @@ class Authform extends Component {
 				{this.state.showSignupForm === false &&
 				this.state.showLoginFrom === false ? (
 					<div className='authbuttons'>
+						<h1>Your Mutual support</h1>
 						<button onClick={this.handleSignUpBtn}>Sign Up</button>
 						<button onClick={this.handleLogInBtn}>Log In</button>
 					</div>
