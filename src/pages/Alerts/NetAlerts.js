@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withAuth } from "./../../context/auth-context";
+import { withAuth } from "../../context/auth-context";
 
 class Alerts extends Component {
   render() {

@@ -6,8 +6,9 @@ import { withAuth } from "./context/auth-context";
 // Pages
 import MainPage from "./pages/MainPage/MainPage";
 import HeatMap from "./pages/HeatMap/HeatMap";
-import Alerts from "./pages/Alerts/Alerts";
+import NetAlerts from "./pages/NetAlerts/NetAlerts";
 import Profile from "./pages/Profile/Profile";
+import UserAlert from "./pages/UserAlert/UserAlert";
 
 // Components
 import Navbar from "./components/Navbar/Navbar";
@@ -24,8 +25,9 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={MainPage} />
           <PrivateRoute exact path='/heatmap' component={HeatMap} />
-          <PrivateRoute exact path='/alerts' component={Alerts} />
+          <PrivateRoute exact path='/alerts' component={NetAlerts} />
           <PrivateRoute exact path='/profile' component={Profile} />
+          <PrivateRoute exact path='/alerts/:alertId' component={UserAlert} />
         </Switch>
       </div>
     );

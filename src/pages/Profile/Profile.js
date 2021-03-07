@@ -9,17 +9,13 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    console.log("ComponentDidMount before me", this.props.user.nets);
     this.props.me();
-    console.log("ComponentDidMount after me", this.props.user.nets);
     this.setState({ nets: this.props.user.nets });
   }
 
   handleLeave = (netId) => {
     netService.leave(netId);
-    console.log("handleLeave before me", this.props.user);
     this.props.me();
-    console.log("handleLeave after me", this.props.user);
     this.setState({ nets: this.props.user.nets });
   };
 
