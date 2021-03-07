@@ -46,6 +46,3 @@ class AuthService {
 const authService = new AuthService();
 
 export default authService;
-
-// Service is a set of methods abstracted and placed into a class, out of which we create one instance.
-// In the above case, all axios request calls are abstracted into methods.

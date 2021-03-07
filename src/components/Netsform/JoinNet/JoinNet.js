@@ -1,16 +1,21 @@
 import React, { Component } from "react";
 import { withAuth } from "./../../../context/auth-context";
+import { Redirect } from "react-router-dom";
+import netService from "./../../../services/net-service";
 
 class JoinNet extends Component {
-	state = { netname: "", netcode: "" };
+	state = {
+		netname: "",
+		netcode: "",
+		netcreated: false,
+	};
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		const { netname, netcode } = this.state;
-		console.log(netname, netcode);
 
-		// Call function coming from AuthProvider ( via withAuth )
-		//this.props.login(username, password);
+		netService.join(netname, netcode);
+		this.setState({ netname: "", netcode: "", netcreated: true });
 	};
 
 	handleChange = (event) => {
@@ -18,8 +23,14 @@ class JoinNet extends Component {
 		this.setState({ [name]: value });
 	};
 
+	componentDidMount() {
+		this.setState({ netcreated: false });
+	}
+
 	render() {
 		const { netname, netcode } = this.state;
+
+		if (this.state.netcreated) return <Redirect to='/profile' />;
 
 		return (
 			<div>

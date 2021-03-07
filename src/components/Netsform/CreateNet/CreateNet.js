@@ -16,10 +16,7 @@ class CreateNet extends Component {
 		const { netname, netcode } = this.state;
 		
     netService.create(netname, netcode)
-    this.props.me()
     this.setState( { netname: "", netcode: "", netcreated: true } );
-    // Call function coming from AuthProvider ( via withAuth )
-		//this.props.login(username, password);
 	};
 
 	handleChange = (event) => {
