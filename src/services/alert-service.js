@@ -17,6 +17,26 @@ class AlertService {
     const pr = this.alert.get(`/active/${alertId}`).then(({ data }) => data);
     return pr;
   }
+
+  delete(alertId) {
+    const pr = this.alert
+      .post("/delete", { value: alertId })
+      .then(({ data }) => data);
+    return pr;
+  }
+
+  iamfine(alertId) {
+    const pr = this.alert
+      .post("/iamfine", { value: alertId })
+      .then(({ data }) => data);
+    return pr;
+  }
+
+  archive(alertId) {
+    const pr = this.alert
+      .post("/archive", { value: alertId })
+      .then(({ data }) => data);
+  }
 }
 
 const alertService = new AlertService();
