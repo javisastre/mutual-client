@@ -24,7 +24,7 @@ class NetService {
 
   leave(netId) {
     const pr = this.net
-      .post("/api/nets/leave", { netId })
+      .post("/api/nets/leave", { value: netId })
       .then(({ data }) => data);
     return pr;
   }
