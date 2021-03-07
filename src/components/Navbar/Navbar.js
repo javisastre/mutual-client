@@ -26,22 +26,26 @@ class Navbar extends Component {
           <>
             {this.state.displayMenu ? (
               <>
+                <Menu toggle={this.toggleMenu} />
                 <i
                   class='fas fa-times'
                   id='menu-btn'
                   onClick={this.toggleMenu}
                 ></i>
-                <Menu toggle={this.toggleMenu} />
               </>
             ) : (
-              <i
-                className='fas fa-bars'
-                id='menu-btn'
-                onClick={this.toggleMenu}
-              ></i>
+              <>
+                <i
+                  className='fas fa-bars'
+                  id='menu-btn'
+                  onClick={this.toggleMenu}
+                ></i>
+                <p>username: {this.props.user && this.props.user.username}</p>
+                <p>
+                  alerts: {this.props.user && this.props.user.netAlerts.length}
+                </p>
+              </>
             )}
-            <p>username: {this.props.user && this.props.user.username}</p>
-            <p>alerts: {this.props.user && this.props.user.netAlerts.length}</p>
           </>
         ) : null}
       </nav>

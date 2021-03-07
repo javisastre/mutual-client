@@ -3,4 +3,9 @@
   height: 95vh;
   width: 100vw;
   color: white;
+  position: absolute;
+  top: 5vh;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
