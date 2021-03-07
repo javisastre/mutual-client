@@ -7,7 +7,7 @@ class JoinNet extends Component {
 	state = {
 		netname: "",
 		netcode: "",
-		netcreated: false,
+		netjoined: false,
 	};
 
 	handleFormSubmit = (event) => {
@@ -15,7 +15,7 @@ class JoinNet extends Component {
 		const { netname, netcode } = this.state;
 
 		netService.join(netname, netcode);
-		this.setState({ netname: "", netcode: "", netcreated: true });
+		this.setState({ netname: "", netcode: "", netjoined: true });
 	};
 
 	handleChange = (event) => {
@@ -24,13 +24,13 @@ class JoinNet extends Component {
 	};
 
 	componentDidMount() {
-		this.setState({ netcreated: false });
+		this.setState({ netjoined: false });
 	}
 
 	render() {
 		const { netname, netcode } = this.state;
 
-		if (this.state.netcreated) return <Redirect to='/profile' />;
+		if (this.state.netjoined) return <Redirect to='/profile' />;
 
 		return (
 			<div>
