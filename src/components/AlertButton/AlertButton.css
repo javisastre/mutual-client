@@ -1,0 +1,25 @@
+.alert-container {
+  width: 100vw;
+  height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.alert-button {
+	width: 50vh;
+	height: 50vh;
+	border-radius: 50%;
+  background-color: red;
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+
+.alert-button:active {
+  transform: scale(0.98);
+}
+
+.alert-button:focus {
+  outline: none;
+  border: none;
+}
+
