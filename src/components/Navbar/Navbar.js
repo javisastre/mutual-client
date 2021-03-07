@@ -28,12 +28,12 @@ class Navbar extends Component {
               <>
                 <Menu toggle={this.toggleMenu} />
                 <i className='fas fa-times' onClick={this.toggleMenu}></i>
-                <Link to='/'>
+                <Link to='/' onClick={this.toggleMenu}>
                   <p className='username'>
                     {this.props.user && this.props.user.username}
                   </p>
                 </Link>
-                {/* TODO Fixe username to center of menu screen */}
+                {/* TODO Fix username to center of menu screen */}
                 <span style={{ width: "width: 4.4vh" }}></span>
               </>
             ) : (
