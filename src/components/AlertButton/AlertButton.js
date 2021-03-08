@@ -3,18 +3,21 @@ import { withAuth } from "./../../context/auth-context";
 import { Redirect } from 'react-router-dom'
 import "./AlertButton.css";
 import AlertService from "./../../services/alert-service";
+import AuthService from "./../../services/auth-service";
 
 class AlertButton extends Component {
-	
-  state = {
-    alertsent: false,
-    alertId: "",
-    alert: {}
+	constructor(props) {
+    super()
+    this.state = {
+      alertsent: false,
+      alertId: "",
+      alert: {}
+    }
   }
 
   handleClick = async () => {
     const createdAlert = await AlertService.create()
-    
+    this.props.me()
     const alertId = createdAlert._id
     this.setState({alertsent: true, alertId})
 	};

@@ -36,7 +36,10 @@ class AuthService {
   me() {
     const pr = this.auth
       .get("/auth/me")
-      .then((response) => response.data);
+      .then((response) => {
+        console.log(response)
+        return response.data
+      });
 
     return pr;
   }
