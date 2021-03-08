@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import './IAmOkForm.css'
+import { Redirect } from 'react-router-dom'
+import alertService from './../../services/alert-service'
 
 class IAmOkForm extends Component {
   state = {
@@ -15,32 +17,45 @@ class IAmOkForm extends Component {
       ideology: false,
       religion: false,
       others: false,
-    }
+    },
+    redirect: false
   };
 
   handleInputChange = (event) => {
     const value = event.target.checked;
     const name = event.target.name;
 
-    console.log(name, value)
-    //console.log("pre update", this.state)
+    const updatedCategory = this.state.category
+    updatedCategory[name] = value
 
-    this.setState({ [name]: value });
-
-    console.log(this.state)
-    //console.log("post update", this.state)
+    this.setState({ category: updatedCategory });
   }
 
   componentDidMount() {
-    this.setState({ alertId: this.props.alertData._id });
+    this.setState({ alertId: this.props.alertData._id, redirect: false });
   }
 
-  handleFormSubmit = () => {
+  handleFormSubmit = (event) => {
+    event.preventDefault()
     const { publicBoolean, alertstory, category } = this.state
-    
-    const public = publicBoolean
+    const publicAlert = publicBoolean
 
-    console.log(public, alertstory, category)
+    const categoryArray = [];
+    for (let item in category) {
+      if (category[item]) categoryArray.push(item);
+    }
+
+    const objectForUpdate = {
+      alertId: this.state.alertId,
+      publish: publicAlert,
+      category: categoryArray,
+      story: alertstory
+    }
+    console.log("variables to send to to axios:", objectForUpdate)
+
+    alertService.archive(objectForUpdate)
+    this.setState({redirect: true})
+    
   };
 
   handleChange = (event) => {
@@ -57,6 +72,8 @@ class IAmOkForm extends Component {
   };
 
   render() {
+
+    if (this.state.redirect) return <Redirect to="/profile" />
   
     return (
       <div>
@@ -129,7 +146,7 @@ class IAmOkForm extends Component {
                 </label>
                 <label>
                 <input 
-                  name='other'
+                  name='others'
                   type='checkbox' 
                   checked={this.state.other}
                   onChange={this.handleInputChange}
