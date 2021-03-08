@@ -4,13 +4,21 @@ import "./Netsform.css";
 import { withAuth } from "../../context/auth-context";
 import CreateNet from "./CreateNet/CreateNet";
 import JoinNet from "./JoinNet/JoinNet";
+import { Redirect } from 'react-router-dom'
+import authService from './../../services/auth-service'
 
 class Netsform extends Component {
   state = {
     showCreateNet: false,
     showJoinNet: false,
-    back: false,
+    redirect: null,
   };
+
+  goBack = (input) => {
+    //authService.me()
+    this.props.me()
+    this.setState( { redirect: input})
+  }
 
   handleCreateBtn = () => {
     this.setState({
@@ -27,6 +35,8 @@ class Netsform extends Component {
   };
 
   render() {
+
+    if (this.state.redirect) return <Redirect to="/profile" />
     return (
       <div className='authform'>
         <h4>You are not part of any net yet</h4>
@@ -40,7 +50,7 @@ class Netsform extends Component {
 
         {this.state.showCreateNet ? (
           <>
-            <CreateNet />
+            <CreateNet back={this.goBack} />
             <button className='alreadymember' onClick={this.handleJoinBtn}>
               Want to join a net?
             </button>
@@ -49,7 +59,7 @@ class Netsform extends Component {
 
         {this.state.showJoinNet ? (
           <>
-            <JoinNet />
+            <JoinNet  back={this.goBack} />
             <button className='alreadymember' onClick={this.handleCreateBtn}>
               Want to create a new net?
             </button>

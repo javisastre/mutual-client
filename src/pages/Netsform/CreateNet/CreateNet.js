@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withAuth } from "../../../context/auth-context";
-import { Redirect } from 'react-router-dom'
 import netService from "../../../services/net-service"
 
 class CreateNet extends Component {
@@ -8,7 +7,6 @@ class CreateNet extends Component {
 	state = { 
     netname: "", 
     netcode: "",
-    netcreated: false
   };
 
 	handleFormSubmit = (event) => {
@@ -16,7 +14,10 @@ class CreateNet extends Component {
 		const { netname, netcode } = this.state;
 		
     netService.create(netname, netcode)
-    this.setState( { netname: "", netcode: "", netcreated: true } );
+
+    this.setState( { netname: "", netcode: "" } );
+
+		this.props.back("/profile")
 	};
 
 	handleChange = (event) => {
@@ -24,14 +25,8 @@ class CreateNet extends Component {
 		this.setState({ [name]: value });
 	};
 
-  componentDidMount() {
-    this.setState({ netcreated: false})
-  }
-
 	render() {
 		const { netname, netcode } = this.state;
-
-    if(this.state.netcreated) return <Redirect to="/profile" />
 
 		return (
 			<div>

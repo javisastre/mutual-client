@@ -4,20 +4,17 @@ import { withAuth } from "./../../context/auth-context";
 import netService from "./../../services/net-service";
 
 class Profile extends Component {
-  state = {
-    nets: [],
-  };
+  constructor (props) {
+    super()
+    this.state = {
+      nets: []
+    }
+  }
 
   componentDidMount() {
     this.props.me();
     this.setState({ nets: this.props.user.nets });
   }
-
-  componentDidUpdate() {
-    this.props.me();
-  }
-
-  // componentWillReceiveProps(){}
 
   handleLeave = (netId) => {
     netService.leave(netId);
@@ -28,6 +25,8 @@ class Profile extends Component {
   render() {
     if (this.props.user.nets.length === 0) {
       return <Redirect to='/' />;
+    } else if (Object.keys(this.props.user.nets[0]).length === 24) {
+      return <p>Loading...</p>
     } else {
       return (
         <div>
@@ -45,7 +44,7 @@ class Profile extends Component {
             <button>Join or Create a Net</button>
           </Link>
         </div>
-      );
+      )
     }
   }
 }

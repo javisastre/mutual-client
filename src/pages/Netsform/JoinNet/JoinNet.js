@@ -1,13 +1,11 @@
 import React, { Component } from "react";
 import { withAuth } from "../../../context/auth-context";
-import { Redirect } from "react-router-dom";
 import netService from "../../../services/net-service";
 
 class JoinNet extends Component {
 	state = {
 		netname: "",
 		netcode: "",
-		netjoined: false,
 	};
 
 	handleFormSubmit = (event) => {
@@ -15,7 +13,10 @@ class JoinNet extends Component {
 		const { netname, netcode } = this.state;
 
 		netService.join(netname, netcode);
-		this.setState({ netname: "", netcode: "", netjoined: true });
+
+		this.setState({ netname: "", netcode: "" });
+
+		this.props.back("/profile")
 	};
 
 	handleChange = (event) => {
@@ -23,14 +24,8 @@ class JoinNet extends Component {
 		this.setState({ [name]: value });
 	};
 
-	componentDidMount() {
-		this.setState({ netjoined: false });
-	}
-
 	render() {
 		const { netname, netcode } = this.state;
-
-		if (this.state.netjoined) return <Redirect to='/profile' />;
 
 		return (
 			<div>
