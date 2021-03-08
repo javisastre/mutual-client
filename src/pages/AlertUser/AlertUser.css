@@ -56,7 +56,8 @@ h4 {
   font-size: 1.2rem;
 }
 
-button {
+.cancel-alert,
+.finish-alert {
   width: 40vw;
   padding-bottom: 3vh;
 }

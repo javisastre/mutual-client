@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { withAuth } from "../../../context/auth-context";
-import './Signup.css'
+import "./Signup.css";
 
 class Signup extends Component {
   state = { username: "", email: "", password: "" };
@@ -20,38 +19,38 @@ class Signup extends Component {
   render() {
     const { username, email, password } = this.state;
     return (
-			<div className='signupform'>
-				<h1>Welcome to Mutual</h1>
+      <div className='signupform'>
+        <h1>Welcome to Mutual</h1>
 
-				<form className='formInputs' onSubmit={this.handleFormSubmit}>
-					<input
-						type='text'
-						name='username'
-						value={username}
-						onChange={this.handleChange}
-						placeholder='Username'
-					/>
+        <form className='formInputs' onSubmit={this.handleFormSubmit}>
+          <input
+            type='text'
+            name='username'
+            value={username}
+            onChange={this.handleChange}
+            placeholder='Username'
+          />
 
-					<input
-						type='email'
-						name='email'
-						value={email}
-						onChange={this.handleChange}
-						placeholder='Email'
-					/>
+          <input
+            type='email'
+            name='email'
+            value={email}
+            onChange={this.handleChange}
+            placeholder='Email'
+          />
 
-					<input
-						type='password'
-						name='password'
-						value={password}
-						onChange={this.handleChange}
-						placeholder='Password'
-					/>
+          <input
+            type='password'
+            name='password'
+            value={password}
+            onChange={this.handleChange}
+            placeholder='Password'
+          />
 
-					<button type='submit'> SignUp </button>
-				</form>
-			</div>
-		);
+          <button type='submit'> SignUp </button>
+        </form>
+      </div>
+    );
   }
 }
 

@@ -36,6 +36,7 @@ class AlertService {
     const pr = this.alert
       .post("/archive", { value: alertId })
       .then(({ data }) => data);
+    return pr;
   }
 }
 

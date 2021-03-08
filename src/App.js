@@ -6,14 +6,15 @@ import { withAuth } from "./context/auth-context";
 // Pages
 import MainPage from "./pages/MainPage/MainPage";
 import HeatMap from "./pages/HeatMap/HeatMap";
-import NetAlerts from "./pages/NetAlerts/NetAlerts";
+import AlertList from "./pages/AlertList/AlertList";
 import Profile from "./pages/Profile/Profile";
-import UserAlert from "./pages/UserAlert/UserAlert";
+import AlertUser from "./pages/AlertUser/AlertUser";
 import Netsform from "./pages/Netsform/Netsform";
+import AlertMap from "./pages/AlertMap/AlertMap";
 
 // Components
 import Navbar from "./components/Navbar/Navbar";
-import AnonRoute from "./components/AnonRoute/AnonRoute";
+// import AnonRoute from "./components/AnonRoute/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 class App extends Component {
@@ -27,9 +28,14 @@ class App extends Component {
           <Route exact path='/' component={MainPage} />
           <PrivateRoute exact path='/nets' component={Netsform} />
           <PrivateRoute exact path='/heatmap' component={HeatMap} />
-          <PrivateRoute exact path='/alerts' component={NetAlerts} />
+          <PrivateRoute exact path='/alerts' component={AlertList} />
           <PrivateRoute exact path='/profile' component={Profile} />
-          <PrivateRoute exact path='/alerts/:alertId' component={UserAlert} />
+          <PrivateRoute exact path='/alerts/:alertId' component={AlertUser} />
+          <PrivateRoute
+            exact
+            path='/alerts/map/:alertId'
+            component={AlertMap}
+          />
         </Switch>
       </div>
     );

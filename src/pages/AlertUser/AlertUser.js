@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { withAuth } from "./../../context/auth-context";
+import { withAuth } from "../../context/auth-context";
 import { Redirect } from "react-router-dom";
-import AlertService from "./../../services/alert-service";
+import AlertService from "../../services/alert-service";
 import IAmOkForm from "../../components/IAmOkForm/IAmOkForm";
-import "./UserAlert.css";
+import "./AlertUser.css";
 
-class UserAlert extends Component {
+class AlertUser extends Component {
   state = {
     alert: {},
     redirectHome: false,
@@ -74,4 +74,4 @@ class UserAlert extends Component {
   }
 }
 
-export default withAuth(UserAlert);
+export default withAuth(AlertUser);
