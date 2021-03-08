@@ -17,6 +17,8 @@ class Profile extends Component {
     this.props.me();
   }
 
+  // componentWillReceiveProps(){}
+
   handleLeave = (netId) => {
     netService.leave(netId);
     this.props.me();

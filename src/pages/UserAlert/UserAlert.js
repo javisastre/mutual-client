@@ -3,6 +3,7 @@ import { withAuth } from "./../../context/auth-context";
 import { Redirect } from "react-router-dom";
 import AlertService from "./../../services/alert-service";
 import IAmOkForm from "../../components/IAmOkForm/IAmOkForm";
+import "./UserAlert.css";
 
 class UserAlert extends Component {
   state = {
@@ -34,22 +35,28 @@ class UserAlert extends Component {
 
   render() {
     const alertScreen = (
-      <div>
-        <h4>Alert sent at:</h4>
-        <h2>{this.state.alert.hour}</h2>
-        <h2>{this.state.alert.date}</h2>
+      <div className='user-alert'>
+        <div className='content'>
+          <span class='dot'></span>
+          <h4>Alert sent at:</h4>
+          <h2>{this.state.alert.hour}</h2>
+          <h2>{this.state.alert.date}</h2>
 
-        <h4>To the following nets:</h4>
-        {this.props.user.nets.map((net) => {
-          return <h2 key={net._id}>{net.netname}</h2>;
-        })}
-
-        <button className='cancel-alert' onClick={this.handleCancelBtn}>
-          Cancel, not an alert
-        </button>
-        <button className='finish-alert' onClick={this.handleFineBtn}>
-          I'm Ok, finish alert
-        </button>
+          <h4>To the following nets:</h4>
+          {this.props.user.nets.map((net) => {
+            return <h2 key={net._id}>{net.netname}</h2>;
+          })}
+        </div>
+        <div className='buttons-div'>
+          <button className='cancel-alert' onClick={this.handleCancelBtn}>
+            <p className='button-big'>Cancel</p>
+            <p className='button-baseline'>not an alert</p>
+          </button>
+          <button className='finish-alert' onClick={this.handleFineBtn}>
+            <p className='button-big'>I'm Ok</p>
+            <p className='button-baseline'>finish alert</p>
+          </button>
+        </div>
       </div>
     );
 

@@ -30,6 +30,10 @@
   border-radius: 50%;
 }
 
+.notif-num:hover {
+  cursor: pointer;
+}
+
 .notif-num > p {
   margin-top: 18px;
 }
@@ -39,5 +43,10 @@
 }
 
 .fas {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  padding: 10px;
+}
+
+.fas:hover {
+  cursor: pointer;
 }
