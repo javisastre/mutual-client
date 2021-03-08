@@ -9,6 +9,7 @@ import HeatMap from "./pages/HeatMap/HeatMap";
 import NetAlerts from "./pages/NetAlerts/NetAlerts";
 import Profile from "./pages/Profile/Profile";
 import UserAlert from "./pages/UserAlert/UserAlert";
+import Netsform from "./pages/Netsform/Netsform";
 
 // Components
 import Navbar from "./components/Navbar/Navbar";
@@ -24,6 +25,7 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route exact path='/' component={MainPage} />
+          <PrivateRoute exact path='/nets' component={Netsform} />
           <PrivateRoute exact path='/heatmap' component={HeatMap} />
           <PrivateRoute exact path='/alerts' component={NetAlerts} />
           <PrivateRoute exact path='/profile' component={Profile} />

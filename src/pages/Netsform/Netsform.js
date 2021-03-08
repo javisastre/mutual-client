@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import "./Netsform.css";
 
-import { withAuth } from "./../../context/auth-context";
+import { withAuth } from "../../context/auth-context";
 import CreateNet from "./CreateNet/CreateNet";
 import JoinNet from "./JoinNet/JoinNet";
+import userEvent from "@testing-library/user-event";
+import { Redirect } from "react-router";
 
 class Netsform extends Component {
   state = {
@@ -27,6 +29,7 @@ class Netsform extends Component {
   };
 
   render() {
+
     return (
       <div className='authform'>
         <h4>You are not part of any net yet</h4>

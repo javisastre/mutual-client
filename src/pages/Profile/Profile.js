@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router";
+import { Redirect, Link } from "react-router-dom";
 import { withAuth } from "./../../context/auth-context";
 import netService from "./../../services/net-service";
 
@@ -11,6 +11,10 @@ class Profile extends Component {
   componentDidMount() {
     this.props.me();
     this.setState({ nets: this.props.user.nets });
+  }
+
+  componentDidUpdate() {
+    this.props.me();
   }
 
   handleLeave = (netId) => {
@@ -35,6 +39,9 @@ class Profile extends Component {
               </div>
             );
           })}
+          <Link to='/nets'>
+            <button>Join or Create a Net</button>
+          </Link>
         </div>
       );
     }

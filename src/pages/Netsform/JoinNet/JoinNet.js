@@ -1,22 +1,21 @@
 import React, { Component } from "react";
-import { withAuth } from "./../../../context/auth-context";
-import { Redirect } from 'react-router-dom'
-import netService from "./../../../services/net-service"
+import { withAuth } from "../../../context/auth-context";
+import { Redirect } from "react-router-dom";
+import netService from "../../../services/net-service";
 
-class CreateNet extends Component {
-
-	state = { 
-    netname: "", 
-    netcode: "",
-    netcreated: false
-  };
+class JoinNet extends Component {
+	state = {
+		netname: "",
+		netcode: "",
+		netjoined: false,
+	};
 
 	handleFormSubmit = (event) => {
 		event.preventDefault();
 		const { netname, netcode } = this.state;
-		
-    netService.create(netname, netcode)
-    this.setState( { netname: "", netcode: "", netcreated: true } );
+
+		netService.join(netname, netcode);
+		this.setState({ netname: "", netcode: "", netjoined: true });
 	};
 
 	handleChange = (event) => {
@@ -24,18 +23,18 @@ class CreateNet extends Component {
 		this.setState({ [name]: value });
 	};
 
-  componentDidMount() {
-    this.setState({ netcreated: false})
-  }
+	componentDidMount() {
+		this.setState({ netjoined: false });
+	}
 
 	render() {
 		const { netname, netcode } = this.state;
 
-    if(this.state.netcreated) return <Redirect to="/profile" />
+		if (this.state.netjoined) return <Redirect to='/profile' />;
 
 		return (
 			<div>
-				<h1>Create a Net</h1>
+				<h1>Join a Net</h1>
 
 				<form className='formInputs' onSubmit={this.handleFormSubmit}>
 					<input
@@ -54,11 +53,11 @@ class CreateNet extends Component {
 						placeholder='Net code'
 					/>
 
-					<button type='submit'>Create</button>
+					<button type='submit'>Join</button>
 				</form>
 			</div>
 		);
 	}
 }
 
-export default withAuth(CreateNet);
+export default withAuth(JoinNet);
