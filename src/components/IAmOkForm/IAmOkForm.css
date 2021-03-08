@@ -1,0 +1,52 @@
+.alerth1 {
+  margin: 0;
+}
+
+.iamokflex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.iamokform {
+  width: 90vw;
+  justify-content: space-between;
+}
+
+.yesorno {
+  flex-direction: row;
+}
+
+.yesorno > label {
+  width: 70%;
+}
+
+.yesorno > select {
+  width: 10%;
+  height: 4vh;
+}
+
+.checkboxes {
+  margin-top: 5vh;
+  flex-direction: column;
+  width: 100%;
+}
+
+.checkboxes > label {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 5vh
+}
+
+.checkboxes > label > input {
+  height: 4vh;
+  width: 5vw;
+  margin-right: 5vw;
+}
+
+.conditionalform > textarea {
+  width: 65vw;
+  height: 10vh;
+}
