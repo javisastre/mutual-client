@@ -32,9 +32,9 @@ class AlertService {
     return pr;
   }
 
-  archive(alertId) {
+  archive(alertObj) {
     const pr = this.alert
-      .post("/archive", { value: alertId })
+      .post("/archive", alertObj)
       .then(({ data }) => data);
     return pr;
   }
