@@ -14,9 +14,8 @@ class Netsform extends Component {
     redirect: null,
   };
 
-  goBack = (input) => {
-    //authService.me()
-    this.props.me()
+  goBack = async (input) => {
+    await this.props.me()
     this.setState( { redirect: input})
   }
 

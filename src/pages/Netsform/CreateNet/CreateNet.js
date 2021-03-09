@@ -9,11 +9,11 @@ class CreateNet extends Component {
     netcode: "",
   };
 
-	handleFormSubmit = (event) => {
+	handleFormSubmit = async (event) => {
 		event.preventDefault();
 		const { netname, netcode } = this.state;
 		
-    netService.create(netname, netcode)
+    await netService.create(netname, netcode)
 
     this.setState( { netname: "", netcode: "" } );
 
