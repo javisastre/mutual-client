@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './IAmOkForm.css'
-import { Redirect } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import alertService from './../../services/alert-service'
 
 class IAmOkForm extends Component {
@@ -18,7 +18,6 @@ class IAmOkForm extends Component {
       religion: false,
       others: false,
     },
-    redirect: false
   };
 
   handleInputChange = (event) => {
@@ -54,8 +53,10 @@ class IAmOkForm extends Component {
     console.log("variables to send to to axios:", objectForUpdate)
 
     alertService.archive(objectForUpdate)
+
     this.setState({redirect: true})
     
+    this.props.history.push(`/alerts/map/${this.state.alertId}`)
   };
 
   handleChange = (event) => {
@@ -72,8 +73,6 @@ class IAmOkForm extends Component {
   };
 
   render() {
-
-    if (this.state.redirect) return <Redirect to="/Profile" />
   
     return (
       <div>
@@ -173,4 +172,4 @@ class IAmOkForm extends Component {
   }
 }
 
-export default IAmOkForm;
+export default withRouter(IAmOkForm);

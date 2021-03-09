@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-//import { withAuth } from "../../../context/auth-context";
+import { withAuth } from "../../../context/auth-context";
 import netService from "../../../services/net-service";
 import { withRouter } from 'react-router-dom'
 
 class JoinNet extends Component {
 	constructor (props) {
-		super()
+		super(props)
 		this.state = {
 			netname: "",
 			netcode: "",
@@ -23,6 +23,7 @@ class JoinNet extends Component {
 		this.setState({ netname: "", netcode: "" });
 		console.log("props after setState before push", this.props)
 		
+		await this.props.me()
 		
 		this.props.history.push("/profile")
 	};
@@ -63,4 +64,4 @@ class JoinNet extends Component {
 	}
 }
 
-export default withRouter(JoinNet);
+export default withRouter(withAuth(JoinNet));

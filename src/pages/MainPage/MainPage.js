@@ -3,12 +3,14 @@ import { withAuth } from "./../../context/auth-context";
 import { Redirect } from "react-router-dom";
 import AlertButton from "./../../components/AlertButton/AlertButton";
 import Authform from "./../../components/Authform/Authform";
+import AlertUser from "./../AlertUser/AlertUser";
+
 
 class MainPage extends React.Component {
 
   
-  componentDidMount() {
-    this.props.me();
+  async componentDidMount() {
+    await this.props.me();
   }
 
   getuserData = () => {
@@ -18,15 +20,17 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
-        {!this.props.isLoggedIn ? <Authform data={this.getuserData}/> : null}
+        {!this.props.isLoggedIn ? <Authform /> : null}
 
         {this.props.isLoggedIn && this.props.user.nets.length === 0 ? (
           <Redirect to='/nets' />
         ) : null}
 
         {this.props.isLoggedIn && this.props.user.nets.length > 0 ? (
-          <AlertButton data={this.getuserData}/>
+          <AlertButton />
         ) : null}
+
+        {this.props.user.userAlert ? <AlertUser />: null}
       </div>
     );
   }

@@ -1,32 +1,39 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/auth-context";
-import { Redirect } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import AlertService from "../../services/alert-service";
 import IAmOkForm from "../../components/IAmOkForm/IAmOkForm";
 import "./AlertUser.css";
 
 class AlertUser extends Component {
-  state = {
-    alert: {},
-    redirectHome: null,
-    iAmOk: false,
-  };
+  constructor (props) {
+    super(props)
+    this.state = {
+      alert: {},
+      iAmOk: false,
+      sent: null
+    };
+  }
 
-  componentDidMount() {
-    this.getActiveAlert();
-    this.setState({redirectHome: null})
+  async componentDidMount() {
+    await this.getActiveAlert();
   }
 
   getActiveAlert = async () => {
     const activeAlert = await AlertService.active(
       this.props.match.params.alertId
     );
-    this.setState({ alert: activeAlert, redirectHome: false, iAmOk: false });
+    this.setState({ alert: activeAlert, iAmOk: false });
   };
 
   handleCancelBtn = async () => {
+
     await AlertService.delete(this.state.alert._id);
-    this.setState({ redirectHome: true });
+    await this.props.me()
+
+    this.setState({sent: true})
+
+		this.props.history.push("/")
   };
 
   handleFineBtn = async () => {
@@ -61,8 +68,6 @@ class AlertUser extends Component {
       </div>
     );
 
-    if (this.state.redirectHome) return <Redirect to='/' />;
-
     return (
       <>
         {this.state.iAmOk ? (
@@ -75,4 +80,4 @@ class AlertUser extends Component {
   }
 }
 
-export default withAuth(AlertUser);
+export default withRouter(withAuth(AlertUser));
