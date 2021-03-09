@@ -33,9 +33,12 @@ class AlertService {
   }
 
   archive(alertObj) {
-    const pr = this.alert
-      .post("/archive", alertObj)
-      .then(({ data }) => data);
+    const pr = this.alert.post("/archive", alertObj).then(({ data }) => data);
+    return pr;
+  }
+
+  heatmap() {
+    const pr = this.alert.get("/heatmap").then(({ data }) => data);
     return pr;
   }
 }
