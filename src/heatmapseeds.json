@@ -1,0 +1,454 @@
+{
+  "alerts": [
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1896349, 41.3943553, 0],
+      "publish": true,
+      "category": ["gender"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1927462, 41.3935666, 0],
+      "publish": true,
+      "category": ["gender"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1875964, 41.3970113, 0],
+      "publish": true,
+      "category": ["gender"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1916209, 41.3985361, 0],
+      "publish": true,
+      "category": ["gender"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1953546, 41.4003067, 0],
+      "publish": true,
+      "category": ["gender"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1897756, 41.4014977, 0],
+      "publish": true,
+      "category": ["gender"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1966849, 41.3961539, 0],
+      "publish": true,
+      "category": ["gender"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1933805, 41.4029141, 0],
+      "publish": true,
+      "category": ["gender"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1938954, 41.3991478, 0],
+      "publish": true,
+      "category": ["race"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1919643, 41.3956066, 0],
+      "publish": true,
+      "category": ["race"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1953975, 41.3971197, 0],
+      "publish": true,
+      "category": ["race"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1994744, 41.400532, 0],
+      "publish": true,
+      "category": ["race"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.191814, 41.4016909, 0],
+      "publish": true,
+      "category": ["race"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1886169, 41.4000169, 0],
+      "publish": true,
+      "category": ["race"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1948181, 41.3920974, 0],
+      "publish": true,
+      "category": ["race"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.2010194, 41.3949305, 0],
+      "publish": true,
+      "category": ["sexualorientation"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1951614, 41.3944637, 0],
+      "publish": true,
+      "category": ["sexualorientation"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1930157, 41.3990351, 0],
+      "publish": true,
+      "category": ["sexualorientation"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1891748, 41.3993248, 0],
+      "publish": true,
+      "category": ["sexualorientation"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1916853, 41.3950915, 0],
+      "publish": true,
+      "category": ["sexualorientation"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.193359, 41.4012402, 0],
+      "publish": true,
+      "category": ["sexualorientation"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.2006332, 41.3982142, 0],
+      "publish": true,
+      "category": ["sexualorientation"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1913205, 41.3984235, 0],
+      "publish": true,
+      "category": ["sexualorientation"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1919213, 41.3982303, 0],
+      "publish": true,
+      "category": ["ideology"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.189282, 41.3964436, 0],
+      "publish": true,
+      "category": ["ideology"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1888529, 41.4012402, 0],
+      "publish": true,
+      "category": ["ideology"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1930801, 41.3942545, 0],
+      "publish": true,
+      "category": ["ideology"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1959125, 41.3946247, 0],
+      "publish": true,
+      "category": ["ideology"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1948825, 41.3956549, 0],
+      "publish": true,
+      "category": ["ideology"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1914707, 41.3981176, 0],
+      "publish": true,
+      "category": ["ideology"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1881877, 41.3991317, 0],
+      "publish": true,
+      "category": ["religion"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1911059, 41.3979084, 0],
+      "publish": true,
+      "category": ["religion"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1938525, 41.396508, 0],
+      "publish": true,
+      "category": ["religion"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1887456, 41.4020289, 0],
+      "publish": true,
+      "category": ["religion"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.196406, 41.3999848, 0],
+      "publish": true,
+      "category": ["religion"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1927153, 41.4024956, 0],
+      "publish": true,
+      "category": ["religion"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.2001182, 41.395011, 0],
+      "publish": true,
+      "category": ["religion"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.19411, 41.3978762, 0],
+      "publish": true,
+      "category": ["others"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1895824, 41.3951398, 0],
+      "publish": true,
+      "category": ["others"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1970712, 41.3938037, 0],
+      "publish": true,
+      "category": ["others"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1920715, 41.3978601, 0],
+      "publish": true,
+      "category": ["others"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.19411, 41.4001296, 0],
+      "publish": true,
+      "category": ["others"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1992169, 41.3971519, 0],
+      "publish": true,
+      "category": ["others"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1956121, 41.39852, 0],
+      "publish": true,
+      "category": ["others"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    },
+    {
+      "active": false,
+      "person": "604783be98faba5c88f6e3c3",
+      "location": [2.1908485, 41.3988098, 0],
+      "publish": true,
+      "category": ["others"],
+      "story": "example story",
+      "hour": "15:18:38",
+      "date": "09/03/2021"
+    }
+  ]
+}
