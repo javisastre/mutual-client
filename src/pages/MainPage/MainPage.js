@@ -5,27 +5,25 @@ import AlertButton from "./../../components/AlertButton/AlertButton";
 import Authform from "./../../components/Authform/Authform";
 
 class MainPage extends React.Component {
-
-  
   componentDidMount() {
-    this.props.me();
+    this.getuserData();
   }
 
-  getuserData = () => {
-    this.props.me()
-  }
+  getuserData = async () => {
+    await this.props.me();
+  };
 
   render() {
     return (
       <div>
-        {!this.props.isLoggedIn ? <Authform data={this.getuserData}/> : null}
+        {!this.props.isLoggedIn ? <Authform data={this.getuserData} /> : null}
 
         {this.props.isLoggedIn && this.props.user.nets.length === 0 ? (
           <Redirect to='/nets' />
         ) : null}
 
         {this.props.isLoggedIn && this.props.user.nets.length > 0 ? (
-          <AlertButton data={this.getuserData}/>
+          <AlertButton />
         ) : null}
       </div>
     );

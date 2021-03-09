@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/auth-context";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import AlertService from "../../services/alert-service";
 import IAmOkForm from "../../components/IAmOkForm/IAmOkForm";
 import "./AlertUser.css";
@@ -14,7 +14,7 @@ class AlertUser extends Component {
 
   componentDidMount() {
     this.getActiveAlert();
-    this.setState({redirectHome: null})
+    this.setState({ redirectHome: null });
   }
 
   getActiveAlert = async () => {
@@ -26,7 +26,6 @@ class AlertUser extends Component {
 
   handleCancelBtn = async () => {
     await AlertService.delete(this.state.alert._id);
-    this.setState({ redirectHome: true });
   };
 
   handleFineBtn = async () => {
@@ -49,10 +48,12 @@ class AlertUser extends Component {
           })}
         </div>
         <div className='buttons-div'>
-          <button className='cancel-alert' onClick={this.handleCancelBtn}>
-            <p className='button-big'>Cancel</p>
-            <p className='button-baseline'>not an alert</p>
-          </button>
+          <Link to='/'>
+            <button className='cancel-alert' onClick={this.handleCancelBtn}>
+              <p className='button-big'>Cancel</p>
+              <p className='button-baseline'>not an alert</p>
+            </button>
+          </Link>
           <button className='finish-alert' onClick={this.handleFineBtn}>
             <p className='button-big'>I'm Ok</p>
             <p className='button-baseline'>finish alert</p>
@@ -60,8 +61,6 @@ class AlertUser extends Component {
         </div>
       </div>
     );
-
-    if (this.state.redirectHome) return <Redirect to='/' />;
 
     return (
       <>
