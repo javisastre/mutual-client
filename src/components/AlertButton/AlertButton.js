@@ -3,7 +3,7 @@ import { withAuth } from "./../../context/auth-context";
 import { Redirect } from 'react-router-dom'
 import "./AlertButton.css";
 import AlertService from "./../../services/alert-service";
-import AuthService from "./../../services/auth-service";
+//import AuthService from "./../../services/auth-service";
 
 class AlertButton extends Component {
 	constructor(props) {

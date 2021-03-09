@@ -8,12 +8,13 @@ import "./AlertUser.css";
 class AlertUser extends Component {
   state = {
     alert: {},
-    redirectHome: false,
+    redirectHome: null,
     iAmOk: false,
   };
 
   componentDidMount() {
     this.getActiveAlert();
+    this.setState({redirectHome: null})
   }
 
   getActiveAlert = async () => {

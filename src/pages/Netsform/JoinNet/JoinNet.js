@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { withAuth } from "../../../context/auth-context";
+//import { withAuth } from "../../../context/auth-context";
 import netService from "../../../services/net-service";
+import { withRouter } from 'react-router-dom'
 
 class JoinNet extends Component {
 	constructor (props) {
@@ -12,6 +13,7 @@ class JoinNet extends Component {
 	}
 
 	handleFormSubmit = async (event) => {
+		
 		event.preventDefault();
 
 		const { netname, netcode } = this.state;
@@ -19,8 +21,10 @@ class JoinNet extends Component {
 		await netService.join(netname, netcode);
 
 		this.setState({ netname: "", netcode: "" });
-
-		this.props.back("/profile")
+		console.log("props after setState before push", this.props)
+		
+		
+		this.props.history.push("/profile")
 	};
 
 	handleChange = (event) => {
@@ -59,4 +63,4 @@ class JoinNet extends Component {
 	}
 }
 
-export default withAuth(JoinNet);
+export default withRouter(JoinNet);

@@ -3,19 +3,23 @@ import { withAuth } from "../../../context/auth-context";
 import netService from "../../../services/net-service"
 
 class CreateNet extends Component {
-
-	state = { 
-    netname: "", 
-    netcode: "",
-  };
+	constructor(props) {
+		super()
+		this.state = { 
+			netname: "", 
+			netcode: "",
+		};
+	}
 
 	handleFormSubmit = async (event) => {
 		event.preventDefault();
+		
 		const { netname, netcode } = this.state;
 		
     await netService.create(netname, netcode)
 
     this.setState( { netname: "", netcode: "" } );
+
 
 		this.props.back("/profile")
 	};

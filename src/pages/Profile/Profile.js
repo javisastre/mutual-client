@@ -12,14 +12,15 @@ class Profile extends Component {
   }
 
   componentDidMount() {
+    console.log("in profile")
     this.props.me();
     this.setState({ nets: this.props.user.nets });
   }
 
   handleLeave = async (netId) => {
-    console.log("clicked leave")
-    console.log("current state:", this.state.nets)
-    console.log("leaving net:", netId)
+    // console.log("clicked leave")
+    // console.log("current state:", this.state.nets)
+    // console.log("leaving net:", netId)
     await netService.leave(netId);
     console.log("passed netService, before this.props.me")
     await this.props.me();

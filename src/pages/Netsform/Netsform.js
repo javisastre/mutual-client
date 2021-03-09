@@ -5,17 +5,23 @@ import { withAuth } from "../../context/auth-context";
 import CreateNet from "./CreateNet/CreateNet";
 import JoinNet from "./JoinNet/JoinNet";
 import { Redirect } from 'react-router-dom'
-import authService from './../../services/auth-service'
 
 class Netsform extends Component {
-  state = {
-    showCreateNet: false,
-    showJoinNet: false,
-    redirect: null,
-  };
+  constructor (props) {
+    super()
+    this.state = {
+      showCreateNet: false,
+      showJoinNet: false,
+      redirect: null,
+    };
+  }
 
   goBack = async (input) => {
-    await this.props.me()
+
+    const updatedUser = await this.props.me()
+
+    console.log("updatedUser", updatedUser)
+
     this.setState( { redirect: input})
   }
 
@@ -35,7 +41,8 @@ class Netsform extends Component {
 
   render() {
 
-    if (this.state.redirect) return <Redirect to="/profile" />
+    //if (this.state.redirect) return <Redirect to="/profile" />
+
     return (
       <div className='authform'>
         <h4>You are not part of any net yet</h4>
@@ -58,7 +65,11 @@ class Netsform extends Component {
 
         {this.state.showJoinNet ? (
           <>
-            <JoinNet  back={this.goBack} />
+            <JoinNet />
+
+
+
+            
             <button className='alreadymember' onClick={this.handleCreateBtn}>
               Want to create a new net?
             </button>

@@ -26,6 +26,7 @@ class Alerts extends Component {
       if (senderPerson.nets.includes(ownNet)) {
         return ownNet.netname;
       }
+      return ownNet.netname
     });
     return commonNets;
   };
