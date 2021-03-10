@@ -22,7 +22,11 @@ class Signup extends Component {
       <div className='signupform'>
         <h1>Welcome to Mutual</h1>
 
-        <form className='formInputs' onSubmit={this.handleFormSubmit}>
+        <form
+          className='formInputs'
+          onSubmit={this.handleFormSubmit}
+          autoComplete='off'
+        >
           <input
             type='text'
             name='username'

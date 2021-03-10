@@ -13,7 +13,7 @@ function Menu(props) {
           </button>
         </Link>
         <Link to='/alerts'>
-          {/* TODO Numbers of the notifications */}
+
           <button className='menu-button' onClick={props.toggle}>
             Alert List
           </button>
