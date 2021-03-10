@@ -8,8 +8,10 @@ class AlertService {
     });
   }
 
-  create() {
-    const pr = this.alert.post("/create").then(({ data }) => data);
+  create(locationArray) {
+    const pr = this.alert
+    .post("/create", { locationArray })
+    .then(({ data }) => data);
     return pr;
   }
 

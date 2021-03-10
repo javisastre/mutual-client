@@ -7,8 +7,9 @@ import AlertUser from "./../AlertUser/AlertUser";
 
 
 class MainPage extends React.Component {
-  componentDidMount() {
-    this.getuserData();
+
+  async componentDidMount() {
+    await this.getuserData();
   }
 
   getuserData = async () => {
@@ -28,7 +29,7 @@ class MainPage extends React.Component {
           <AlertButton />
         ) : null}
 
-        {this.props.user.userAlert ? <AlertUser />: null}
+        {/* {this.props.user.userAlert ? <AlertUser />: null} */}
       </div>
     );
   }

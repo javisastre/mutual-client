@@ -16,7 +16,11 @@ class AlertButton extends Component {
   }
 
   handleClick = async () => {
-    const createdAlert = await AlertService.create();
+
+    //TODO DYNAMIC GEOLOCATION HERE
+
+    const locationArray = [41.397680267661016, 2.1901371017810924]
+    const createdAlert = await AlertService.create(locationArray);
     await this.props.me();
     const alertId = createdAlert._id;
     this.setState({ alertsent: true, alertId });

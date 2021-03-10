@@ -11,7 +11,6 @@ import Profile from "./pages/Profile/Profile";
 import AlertUser from "./pages/AlertUser/AlertUser";
 import Netsform from "./pages/Netsform/Netsform";
 import AlertMap from "./pages/AlertMap/AlertMap";
-import AlertCancel from "./pages/AlertCancel/AlertCancel";
 
 // Components
 import Navbar from "./components/Navbar/Navbar";
@@ -32,7 +31,6 @@ class App extends Component {
           <PrivateRoute exact path='/alerts' component={AlertList} />
           <PrivateRoute exact path='/profile' component={Profile} />
           <PrivateRoute exact path='/alerts/:alertId' component={AlertUser} />
-          <PrivateRoute exact path='/alertcancel' component={AlertCancel} />
 
           <PrivateRoute
             exact

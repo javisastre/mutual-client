@@ -28,7 +28,6 @@ class AlertUser extends Component {
   };
 
   handleCancelBtn = async () => {
-
     await AlertService.delete(this.state.alert._id);
   };
 
@@ -36,6 +35,10 @@ class AlertUser extends Component {
     await AlertService.iamfine(this.state.alert._id);
     this.setState({ iAmOk: true });
   };
+
+  async componentWillUnmount() {
+    await this.props.me()
+  }
 
   render() {
     const alertScreen = (

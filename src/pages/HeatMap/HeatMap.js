@@ -83,6 +83,10 @@ class Map extends Component {
     this.printAlerts(heatmap);
   }
 
+  async componentWillUnmount() {
+    await this.loadAlertsFromDB();
+  }
+
   render() {
 
     const { lng, lat, zoom } = this.state;
