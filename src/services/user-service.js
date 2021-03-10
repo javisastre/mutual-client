@@ -8,10 +8,15 @@ class UserService {
     });
   }
 
-  alertSender(senderId) {
+  findUser(userId) {
     const pr = this.user
-      .get("/alert-sender", { senderId })
-      .then(({ data }) => data);
+      .get(`/user/${userId}`)
+      .then((response) => response.data);
+    return pr;
+  }
+
+  findAllUsers() {
+    const pr = this.user.get("/all").then((response) => response.data);
     return pr;
   }
 }

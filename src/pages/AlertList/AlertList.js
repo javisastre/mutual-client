@@ -5,66 +5,71 @@ import userService from "./../../services/user-service";
 
 class Alerts extends Component {
   state = {
-    senderArr: [],
+    alertArray: [],
   };
 
   async componentDidMount() {
     await this.props.me();
 
-    const peopleIdArray = this.props.user.netAlerts.map( (alert) => {
-      return alert.person
-    })
+    const peopleIdArray = this.props.user.netAlerts.map((alert) => {
+      return alert.person;
+    });
 
-    console.log("this should be the id of people", peopleIdArray)
+    const allUsers = await userService.findAllUsers();
+    const peopleArray = allUsers.filter((user) => {
+      if (peopleIdArray.includes(user._id)) {
+        return user;
+      }
+    });
 
-    const senderPeople = peopleIdArray.map( async (personId) => {
-      return await userService.alertSender(personId)
-    })
+    const commonNets = [];
+    peopleArray.forEach((person, index) => {
+      let netString = "";
 
-    console.dir("this should be an array of populated people", senderPeople)
-    
-    this.setState({ senderArr: senderPeople})
+      person.nets.forEach((personNet) => {
+        this.props.user.nets.forEach((meNet) => {
+          if (String(personNet) === String(meNet._id)) {
+            netString += meNet.netname + " ";
+          }
+        });
+      });
+      commonNets.push(netString.trim());
+    });
 
-    // const updatedNets = this.getCommonNets(senderPerson);
-    // this.setState({ alertSender: senderPerson, commonNets: updatedNets });
+    const alertArray = [];
+    this.props.user.netAlerts.forEach((alert, index) => {
+      const user = {};
+      user["alertId"] = alert._id;
+      user["name"] = peopleArray[index].username;
+      user["nets"] = commonNets[index];
+      user["date"] = alert.date;
+      user["hour"] = alert.hour;
+      alertArray.push(user);
+    });
+
+    this.setState({ alertArray });
   }
 
-  getCommonNets = (senderPerson) => {
-    const commonNets = this.props.user.nets.map((ownNet) => {
-      if (senderPerson.nets.includes(ownNet)) {
-        return ownNet.netname;
-      }
-      return ownNet.netname
-    });
-    return commonNets;
-  };
-
   render() {
-    if (!this.state.senderArr.length === 0) {
-      return <p>Loading...</p>;
+    if (!this.state.alertArray.length === 0) {
+      return <h4>You have no alerts</h4>;
     } else {
       return (
         <div>
-        <h1>Alert List here</h1>
-          {/* {this.props.user.netAlerts.map((alert) => {
+          {this.state.alertArray.map((alert) => {
             return (
-              <div className='alert-card' key={alert._id}>
-                <h4>{this.state.alertSender.username}</h4>
+              <div className='alert-item' key={alert.alertId}>
+                <h3>{alert.name}</h3>
+                <p>{alert.nets}</p>
                 <p>
-                  At {alert.hour}h, on{alert.date}
+                  {alert.hour} h, {alert.date}
                 </p>
-                <p>
-                  From:{" "}
-                  {this.state.commonNets.map((net) => {
-                    return <p>{net}</p>;
-                  })}
-                </p>
-                <Link to={`/alerts/map/${alert._id}`}>
+                <Link to={`/alerts/map/${alert.alertId}`}>
                   <button>Map</button>
                 </Link>
               </div>
             );
-          })} */}
+          })}
         </div>
       );
     }
