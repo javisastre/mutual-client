@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./HeatMap.css";
 import alertService from "./../../services/alert-service";
+import "./HeatMap.css";
 
 import mapboxgl from "mapbox-gl/dist/mapbox-gl-csp";
 import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
@@ -9,7 +9,7 @@ mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken =
   "pk.eyJ1IjoiZmVkZW11bmllbnRlIiwiYSI6ImNrbHh6ZnA2MjB1bzYydXJ6c3Zxd3JnaG0ifQ.MYXBWDkRnwRoUQn8Dz1RRg";
 
-class Map extends Component {
+class HeatMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -65,7 +65,7 @@ class Map extends Component {
     const { viewLng, viewLat, viewZoom } = this.state;
     const heatmap = new mapboxgl.Map({
       container: this.mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/mapbox/bright-v8",
       center: [viewLng, viewLat],
       zoom: viewZoom,
     });
@@ -91,4 +91,4 @@ class Map extends Component {
     );
   }
 }
-export default Map;
+export default HeatMap;

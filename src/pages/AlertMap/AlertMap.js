@@ -1,4 +1,14 @@
 import React, { Component } from "react";
+import alertService from "./../../services/alert-service";
+import "./AlertMap.css";
+import { Link } from "react-router-dom";
+
+import mapboxgl from "mapbox-gl/dist/mapbox-gl-csp";
+import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
+
+mapboxgl.workerClass = MapboxWorker;
+mapboxgl.accessToken =
+  "pk.eyJ1IjoiamF2aXNhc3RyZSIsImEiOiJja20zYjhqanEyNGdjMnhseXhzMnN6ZHVrIn0.AFfpDI5E3qtERVs7qq5EwQ";
 
 class AlertMap extends Component {
   constructor(props) {
@@ -13,8 +23,21 @@ class AlertMap extends Component {
   }
 
   loadAlertData = async () => {
-    const alert = await alertService.heatmap();
-    this.setState({ alert });
+    const alert = await alertService.active(this.props.match.params.alertId);
+    this.setState({
+      alert,
+      viewLng: alert.location[0],
+      viewLat: alert.location[1],
+    });
+  };
+
+  printAlert = (map) => {
+    new mapboxgl.Marker({
+      color: "#ff033e",
+      draggable: false,
+    })
+      .setLngLat(this.state.alert.location)
+      .addTo(map);
   };
 
   async componentDidMount() {
@@ -22,7 +45,7 @@ class AlertMap extends Component {
 
     // MapBox map load with the state's data
     const { viewLng, viewLat, viewZoom } = this.state;
-    const heatmap = new mapboxgl.Map({
+    const alertMap = new mapboxgl.Map({
       container: this.mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v11",
       center: [viewLng, viewLat],
@@ -30,21 +53,24 @@ class AlertMap extends Component {
     });
 
     // MapBox map movement function
-    heatmap.on("move", () => {
+    alertMap.on("move", () => {
       this.setState({
-        viewLng: heatmap.getCenter().lng.toFixed(4),
-        viewLat: heatmap.getCenter().lat.toFixed(4),
-        viewZoom: heatmap.getZoom().toFixed(2),
+        viewLng: alertMap.getCenter().lng.toFixed(4),
+        viewLat: alertMap.getCenter().lat.toFixed(4),
+        viewZoom: alertMap.getZoom().toFixed(2),
       });
     });
 
     // Print the array of public alerts coming from the DB
-    this.printAlerts(heatmap);
+    this.printAlert(alertMap);
   }
 
   render() {
     return (
       <div>
+        <Link to='/alerts'>
+          <nav className='backNav'>Back</nav>
+        </Link>
         <div ref={this.mapContainer} className='map-container' />
       </div>
     );
