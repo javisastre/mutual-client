@@ -3,7 +3,7 @@ import axios from "axios";
 class AlertService {
   constructor() {
     this.alert = axios.create({
-      baseURL: "http://localhost:5000/api/alerts",
+      baseURL: `${process.env.REACT_APP_API_URL}/api/alerts`,
       withCredentials: true,
     });
   }
