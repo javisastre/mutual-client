@@ -7,20 +7,18 @@ import AlertUser from "./../AlertUser/AlertUser";
 
 
 class MainPage extends React.Component {
+  componentDidMount() {
+    this.getuserData();
+  }
 
-  
-  async componentDidMount() {
+  getuserData = async () => {
     await this.props.me();
-  }
-
-  getuserData = () => {
-    this.props.me()
-  }
+  };
 
   render() {
     return (
       <div>
-        {!this.props.isLoggedIn ? <Authform /> : null}
+        {!this.props.isLoggedIn ? <Authform data={this.getuserData} /> : null}
 
         {this.props.isLoggedIn && this.props.user.nets.length === 0 ? (
           <Redirect to='/nets' />

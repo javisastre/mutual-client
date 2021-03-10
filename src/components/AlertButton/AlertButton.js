@@ -6,39 +6,38 @@ import { withRouter, Redirect } from 'react-router-dom'
 import AlertService from "./../../services/alert-service";
 
 class AlertButton extends Component {
-	constructor(props) {
-    super()
+  constructor(props) {
+    super();
     this.state = {
       alertsent: false,
       alertId: "",
-      alert: {}
-    }
+      alert: {},
+    };
   }
 
   handleClick = async () => {
-    const createdAlert = await AlertService.create()
-    this.props.me()
-    const alertId = createdAlert._id
-    this.setState({alertsent: true, alertId})
-	};
+    const createdAlert = await AlertService.create();
+    await this.props.me();
+    const alertId = createdAlert._id;
+    this.setState({ alertsent: true, alertId });
+  };
 
   componentDidMount() {
-    this.setState({alertsent: false})
+    this.setState({ alertsent: false });
   }
 
-	render() {
+  render() {
+    if (this.state.alertsent)
+      return <Redirect to={`/alerts/${this.state.alertId}`} />;
 
-    if (this.props.user.userAlert) return <Redirect to={`/`} />;
-    if (this.state.alertsent) return <Redirect to={`/`} />
-
-		return (
-			<div className='alert-container' onClick={this.handleClick}>
-				<button className='alert-button' type='submit'>
-					Alert
-				</button>
-			</div>
-		);
-	}
+    return (
+      <div className='alert-container' onClick={this.handleClick}>
+        <button className='alert-button' type='submit'>
+          Alert
+        </button>
+      </div>
+    );
+  }
 }
 
 export default withRouter(withAuth(AlertButton));
