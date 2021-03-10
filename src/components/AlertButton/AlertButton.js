@@ -19,7 +19,7 @@ class AlertButton extends Component {
 
     //TODO DYNAMIC GEOLOCATION HERE
 
-    const locationArray = [41.397680267661016, 2.1901371017810924]
+    const locationArray = [2.1901371017810924, 41.397680267661016]
     const createdAlert = await AlertService.create(locationArray);
     await this.props.me();
     const alertId = createdAlert._id;

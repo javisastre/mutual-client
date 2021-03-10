@@ -13,8 +13,8 @@ class AlertMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      viewLng: 2.1945,
       viewLat: 41.3988,
+      viewLng: 2.1945,
       viewZoom: 16,
       alert: [],
     };
