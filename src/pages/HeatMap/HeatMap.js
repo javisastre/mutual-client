@@ -83,12 +83,18 @@ class HeatMap extends Component {
     this.printAlerts(heatmap);
   }
 
+  async componentWillUnmount() {
+    await this.loadAlertsFromDB();
+  }
+
   render() {
+
+    const { lng, lat, zoom } = this.state;
     return (
       <div>
         <div ref={this.mapContainer} className='map-container' />
       </div>
-    );
+    )
   }
 }
 export default HeatMap;

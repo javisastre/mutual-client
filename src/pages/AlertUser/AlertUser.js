@@ -6,11 +6,14 @@ import IAmOkForm from "../../components/IAmOkForm/IAmOkForm";
 import "./AlertUser.css";
 
 class AlertUser extends Component {
-  state = {
-    alert: {},
-    redirectHome: null,
-    iAmOk: false,
-  };
+  constructor (props) {
+    super(props)
+    this.state = {
+      alert: {},
+      iAmOk: false,
+      sent: null
+    };
+  }
 
   componentDidMount() {
     this.getActiveAlert();
@@ -21,7 +24,7 @@ class AlertUser extends Component {
     const activeAlert = await AlertService.active(
       this.props.match.params.alertId
     );
-    this.setState({ alert: activeAlert, redirectHome: false, iAmOk: false });
+    this.setState({ alert: activeAlert, iAmOk: false });
   };
 
   handleCancelBtn = async () => {
@@ -32,6 +35,10 @@ class AlertUser extends Component {
     await AlertService.iamfine(this.state.alert._id);
     this.setState({ iAmOk: true });
   };
+
+  async componentWillUnmount() {
+    await this.props.me()
+  }
 
   render() {
     const alertScreen = (

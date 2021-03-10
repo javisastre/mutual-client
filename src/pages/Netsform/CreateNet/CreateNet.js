@@ -1,14 +1,22 @@
 import React, { Component } from "react";
-import { withAuth } from "../../../context/auth-context";
+
 import netService from "../../../services/net-service"
+
+import { withAuth } from "../../../context/auth-context";
+import { withRouter } from 'react-router-dom'
 
 class CreateNet extends Component {
 	constructor(props) {
-		super()
+		super(props)
 		this.state = { 
 			netname: "", 
 			netcode: "",
 		};
+	}
+
+	updateUserData = () => {
+		console.log("I am calling this.props.me to update User Data!!!")
+		this.props.me()
 	}
 
 	handleFormSubmit = async (event) => {
@@ -17,11 +25,15 @@ class CreateNet extends Component {
 		const { netname, netcode } = this.state;
 		
     await netService.create(netname, netcode)
-
-    this.setState( { netname: "", netcode: "" } );
-
-
-		this.props.back("/profile")
+    
+		
+		this.updateUserData()
+		
+		console.log("this.props in create net just before redirecting", this.props)
+		
+		this.setState( { netname: "", netcode: "" } );
+		
+		this.props.history.push("/profile")
 	};
 
 	handleChange = (event) => {
@@ -30,6 +42,7 @@ class CreateNet extends Component {
 	};
 
 	render() {
+		console.log("this.props in create net", this.props)
 		const { netname, netcode } = this.state;
 
 		return (
@@ -60,4 +73,4 @@ class CreateNet extends Component {
 	}
 }
 
-export default withAuth(CreateNet);
+export default withRouter(withAuth(CreateNet));

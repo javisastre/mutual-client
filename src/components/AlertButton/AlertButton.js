@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { withAuth } from "./../../context/auth-context";
-import { Redirect } from "react-router-dom";
 import "./AlertButton.css";
+
+import { withAuth } from "./../../context/auth-context";
+import { withRouter, Redirect } from 'react-router-dom'
 import AlertService from "./../../services/alert-service";
-//import AuthService from "./../../services/auth-service";
 
 class AlertButton extends Component {
   constructor(props) {
@@ -16,7 +16,11 @@ class AlertButton extends Component {
   }
 
   handleClick = async () => {
-    const createdAlert = await AlertService.create();
+
+    //TODO DYNAMIC GEOLOCATION HERE
+
+    const locationArray = [41.397680267661016, 2.1901371017810924]
+    const createdAlert = await AlertService.create(locationArray);
     await this.props.me();
     const alertId = createdAlert._id;
     this.setState({ alertsent: true, alertId });
@@ -40,4 +44,4 @@ class AlertButton extends Component {
   }
 }
 
-export default withAuth(AlertButton);
+export default withRouter(withAuth(AlertButton));

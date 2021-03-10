@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import './IAmOkForm.css'
-import { Redirect } from 'react-router-dom'
+import { withRouter, Redirect, Link } from 'react-router-dom'
+import { withAuth } from './../../context/auth-context'
 import alertService from './../../services/alert-service'
 
 class IAmOkForm extends Component {
@@ -18,7 +19,6 @@ class IAmOkForm extends Component {
       religion: false,
       others: false,
     },
-    redirect: false
   };
 
   handleInputChange = (event) => {
@@ -35,8 +35,10 @@ class IAmOkForm extends Component {
     this.setState({ alertId: this.props.alertData._id, redirect: false });
   }
 
-  handleFormSubmit = (event) => {
+  handleFormSubmit = async (event) => {
+
     event.preventDefault()
+    
     const { publicBoolean, alertstory, category } = this.state
     const publicAlert = publicBoolean
 
@@ -51,11 +53,17 @@ class IAmOkForm extends Component {
       category: categoryArray,
       story: alertstory
     }
-    console.log("variables to send to to axios:", objectForUpdate)
 
-    alertService.archive(objectForUpdate)
-    this.setState({redirect: true})
+    if (publicBoolean) alertService.archive(objectForUpdate)
+    console.log("this should archive the alert")
     
+    if (!publicBoolean) alertService.delete(this.state.alertId)
+    console.log("this should delete the alert ")
+
+    this.props.me()
+    console.log("this should update the user data")
+
+    this.props.history.push("/heatmap")
   };
 
   handleChange = (event) => {
@@ -71,9 +79,11 @@ class IAmOkForm extends Component {
     }
   };
 
-  render() {
+  async componentWillUnmount() {
+    await this.props.me()
+  }
 
-    if (this.state.redirect) return <Redirect to="/Profile" />
+  render() {
   
     return (
       <div>
@@ -166,11 +176,11 @@ class IAmOkForm extends Component {
             </div>
           ) : null}
 
-          <button type='submit'>Send Alert Info</button>
+            <button type='submit'>Send Alert Info</button>
         </form>
       </div>
     );
   }
 }
 
-export default IAmOkForm;
+export default withRouter(withAuth(IAmOkForm));
