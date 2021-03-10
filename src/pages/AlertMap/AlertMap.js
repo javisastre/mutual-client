@@ -10,9 +10,6 @@ mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken =
   "pk.eyJ1IjoiamF2aXNhc3RyZSIsImEiOiJja20zYjhqanEyNGdjMnhseXhzMnN6ZHVrIn0.AFfpDI5E3qtERVs7qq5EwQ";
 
-import mapboxgl from "mapbox-gl/dist/mapbox-gl-csp";
-import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
-
 mapboxgl.workerClass = MapboxWorker;
 mapboxgl.accessToken =
   "pk.eyJ1IjoiZmVkZW11bmllbnRlIiwiYSI6ImNrbHh6ZnA2MjB1bzYydXJ6c3Zxd3JnaG0ifQ.MYXBWDkRnwRoUQn8Dz1RRg";
@@ -44,7 +41,7 @@ class AlertMap extends Component {
       draggable: false,
     })
       .setLngLat(this.state.alert.location)
-      .addTo(map);
+      .addTo(map)      
   };
 
   async componentDidMount() {

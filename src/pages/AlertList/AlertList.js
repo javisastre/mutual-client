@@ -5,21 +5,29 @@ import userService from "./../../services/user-service";
 
 class Alerts extends Component {
   state = {
-    alertSender: {},
-    commonNets: [],
+    senderArr: [],
   };
 
-  componentDidMount() {
-    this.props.me();
-    const senderPerson = this.getSenderPerson();
-    const updatedNets = this.getCommonNets(senderPerson);
-    this.setState({ alertSender: senderPerson, commonNets: updatedNets });
+  async componentDidMount() {
+    await this.props.me();
+
+    const peopleIdArray = this.props.user.netAlerts.map( (alert) => {
+      return alert.person
+    })
+
+    console.log("this should be the id of people", peopleIdArray)
+
+    const senderPeople = peopleIdArray.map( async (personId) => {
+      return await userService.alertSender(personId)
+    })
+
+    console.dir("this should be an array of populated people", senderPeople)
+    
+    this.setState({ senderArr: senderPeople})
+
+    // const updatedNets = this.getCommonNets(senderPerson);
+    // this.setState({ alertSender: senderPerson, commonNets: updatedNets });
   }
-
-  getSenderPerson = () => {
-    const person = userService.alertSender(this.props.user.netAlerts[0].person);
-    return person;
-  };
 
   getCommonNets = (senderPerson) => {
     const commonNets = this.props.user.nets.map((ownNet) => {
@@ -32,12 +40,13 @@ class Alerts extends Component {
   };
 
   render() {
-    if (!this.state.senderPerson || !this.state.commonNets) {
+    if (!this.state.senderArr.length === 0) {
       return <p>Loading...</p>;
     } else {
       return (
         <div>
-          {this.props.user.netAlerts.map((alert) => {
+        <h1>Alert List here</h1>
+          {/* {this.props.user.netAlerts.map((alert) => {
             return (
               <div className='alert-card' key={alert._id}>
                 <h4>{this.state.alertSender.username}</h4>
@@ -55,7 +64,7 @@ class Alerts extends Component {
                 </Link>
               </div>
             );
-          })}
+          })} */}
         </div>
       );
     }
