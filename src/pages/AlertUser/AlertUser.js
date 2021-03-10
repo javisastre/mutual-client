@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/auth-context";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AlertService from "../../services/alert-service";
 import IAmOkForm from "../../components/IAmOkForm/IAmOkForm";
 import "./AlertUser.css";

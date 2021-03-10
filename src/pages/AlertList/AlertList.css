@@ -1,0 +1,39 @@
+.alert-list-container{
+  padding-top: 5vh;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.alert-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(165, 165, 165);
+  padding-bottom: 4vh;
+}
+
+.alert-item-text{ 
+  width: 50%;
+  margin-left: 3vh;
+}
+
+.alert-item-text > h3 {
+  color: rgb(173, 35, 35);
+  font-size: 1.8rem;
+}
+
+.alert-text-nets {
+  font-weight: 600;
+}
+
+.alert-list-btn{
+  width: 50%;
+}
+
+.alert-list-btn > a > button {
+  height: 8vh;
+  width: 80%;
+  margin: 0 auto;
+  background-color: rgb(173, 35, 35);
+}
+

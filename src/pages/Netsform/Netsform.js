@@ -4,7 +4,6 @@ import "./Netsform.css";
 import { withAuth } from "../../context/auth-context";
 import CreateNet from "./CreateNet/CreateNet";
 import JoinNet from "./JoinNet/JoinNet";
-import { Redirect } from 'react-router-dom'
 
 class Netsform extends Component {
   constructor (props) {
@@ -18,9 +17,7 @@ class Netsform extends Component {
 
   goBack = async (input) => {
 
-    const updatedUser = await this.props.me()
-
-    console.log("updatedUser", updatedUser)
+    await this.props.me()
 
     this.setState( { redirect: input})
   }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './AlertList.css'
 import { withAuth } from "../../context/auth-context";
 import { Link } from "react-router-dom";
 import userService from "./../../services/user-service";
@@ -55,18 +56,22 @@ class Alerts extends Component {
       return <h4>You have no alerts</h4>;
     } else {
       return (
-        <div>
+        <div className="alert-list-container">
           {this.state.alertArray.map((alert) => {
             return (
               <div className='alert-item' key={alert.alertId}>
-                <h3>{alert.name}</h3>
-                <p>{alert.nets}</p>
-                <p>
-                  {alert.hour} h, {alert.date}
-                </p>
-                <Link to={`/alerts/map/${alert.alertId}`}>
-                  <button>Map</button>
-                </Link>
+                <div className="alert-item-text">
+                  <h3>{alert.name}</h3>
+                  <p className="alert-text-nets">From: {alert.nets}</p>
+                  <p>
+                    {alert.hour} h, {alert.date}
+                  </p>
+                </div>
+                <div className="alert-list-btn">
+                  <Link to={`/alerts/map/${alert.alertId}`}>
+                    <button>Map</button>
+                  </Link>
+                </div>
               </div>
             );
           })}

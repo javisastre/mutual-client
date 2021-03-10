@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import './IAmOkForm.css'
-import { withRouter, Redirect, Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { withAuth } from './../../context/auth-context'
 import alertService from './../../services/alert-service'
 
@@ -55,13 +55,10 @@ class IAmOkForm extends Component {
     }
 
     if (publicBoolean) alertService.archive(objectForUpdate)
-    console.log("this should archive the alert")
     
     if (!publicBoolean) alertService.delete(this.state.alertId)
-    console.log("this should delete the alert ")
 
     this.props.me()
-    console.log("this should update the user data")
 
     this.props.history.push("/heatmap")
   };
