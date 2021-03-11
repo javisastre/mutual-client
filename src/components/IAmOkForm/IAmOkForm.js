@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./IAmOkForm.css";
-import { withRouter } from "react-router-dom";
-import { withAuth } from "./../../context/auth-context";
-import alertService from "./../../services/alert-service";
+import './IAmOkForm.css'
+import { withRouter } from 'react-router-dom'
+import { withAuth } from './../../context/auth-context'
+import alertService from './../../services/alert-service'
 
 class IAmOkForm extends Component {
   state = {
@@ -53,11 +53,11 @@ class IAmOkForm extends Component {
       story: alertstory,
     };
 
-    if (publicBoolean) alertService.archive(objectForUpdate);
-    console.log("this should archive the alert");
+    if (publicBoolean) alertService.archive(objectForUpdate)
+    
+    if (!publicBoolean) alertService.delete(this.state.alertId)
 
-    if (!publicBoolean) alertService.delete(this.state.alertId);
-    console.log("this should delete the alert ");
+    this.props.me()
 
     this.props.me();
     console.log("this should update the user data");

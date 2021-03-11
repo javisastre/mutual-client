@@ -1,0 +1,35 @@
+.nets-list-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.net-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgb(165, 165, 165);
+  padding-bottom: 4vh;
+}
+
+.net-card-info {
+  width: 50%;
+}
+
+.netcode {
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.net-card-btn {
+  width: 30%;
+}
+
+.net-card-btn > button {
+  height: 8vh;
+  width: 100%;
+}
+
+.joinorcreatebtn {
+  margin: 8vh 2.5vh;
+}

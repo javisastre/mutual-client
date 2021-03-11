@@ -18,10 +18,10 @@ class Netsform extends Component {
   goBack = async (input) => {
     const updatedUser = await this.props.me();
 
-    console.log("updatedUser", updatedUser);
+    await this.props.me()
 
-    this.setState({ redirect: input });
-  };
+    this.setState( { redirect: input})
+  }
 
   handleCreateBtn = () => {
     this.setState({

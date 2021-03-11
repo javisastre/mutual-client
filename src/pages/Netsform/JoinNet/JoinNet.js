@@ -21,7 +21,6 @@ class JoinNet extends Component {
 		await netService.join(netname, netcode);
 
 		this.setState({ netname: "", netcode: "" });
-		console.log("props after setState before push", this.props)
 		
 		await this.props.me()
 		

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Profile.css";
 import { Link } from "react-router-dom";
 import { withAuth } from "./../../context/auth-context";
 import netService from "./../../services/net-service";
@@ -23,7 +24,6 @@ class Profile extends Component {
   };
 
   render() {
-    console.log("this.props in profile", this.props);
     if (this.props.user.nets.length === 0) {
       return (
         <div>
@@ -37,19 +37,26 @@ class Profile extends Component {
       return <p>Loading...</p>;
     } else {
       return (
-        <div>
+        <div className='nets-list-container'>
           {this.props.user.nets.map((net) => {
             return (
               <div className='net-card' key={net._id}>
-                <h4>{net.netname}</h4>
-                <p>Access code: {net.netcode}</p>
-                <p>{net.members.length} members</p>
-                <button onClick={() => this.handleLeave(net._id)}>Leave</button>
+                <div className='net-card-info'>
+                  <h4>{net.netname}</h4>
+                  <p>Access code:</p>
+                  <p className='netcode'>{net.netcode}</p>
+                  <p>{net.members.length} members</p>
+                </div>
+                <div className='net-card-btn'>
+                  <button onClick={() => this.handleLeave(net._id)}>
+                    Leave
+                  </button>
+                </div>
               </div>
             );
           })}
           <Link to='/nets'>
-            <button>Join or Create a Net</button>
+            <button className='joinorcreatebtn'>Join or Create a Net</button>
           </Link>
         </div>
       );

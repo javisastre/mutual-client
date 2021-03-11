@@ -16,7 +16,7 @@ class AlertMap extends Component {
       viewLat: 41.3988,
       viewLng: 2.1945,
       viewZoom: 16,
-      alert: [],
+      alert: null
     };
     this.mapContainer = React.createRef();
   }
@@ -67,12 +67,24 @@ class AlertMap extends Component {
   render() {
     return (
       <div>
-        <Link to='/alerts'>
-          <nav className='backNav'>Back</nav>
-        </Link>
         <div ref={this.mapContainer} className='map-container' />
+      {this.state.alert 
+      ? <div className="alert-user-info">
+        <Link to='/alerts'>
+          Back
+        </Link>
+        <div className="alert-bar-text">
+          <p>Sent by:</p> 
+          <p className="alert-bar-username">{this.state.alert.person.username}</p> 
+          <p>{this.state.alert.hour}</p>  
+          <p>{this.state.alert.date}</p>
+        </div>
+        </div>
+      : null
+      }
+     
       </div>
-    );
+    )
   }
 }
 

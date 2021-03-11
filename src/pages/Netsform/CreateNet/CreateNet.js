@@ -15,7 +15,6 @@ class CreateNet extends Component {
 	}
 
 	updateUserData = () => {
-		console.log("I am calling this.props.me to update User Data!!!")
 		this.props.me()
 	}
 
@@ -29,7 +28,6 @@ class CreateNet extends Component {
 		
 		this.updateUserData()
 		
-		console.log("this.props in create net just before redirecting", this.props)
 		
 		this.setState( { netname: "", netcode: "" } );
 		
@@ -42,7 +40,6 @@ class CreateNet extends Component {
 	};
 
 	render() {
-		console.log("this.props in create net", this.props)
 		const { netname, netcode } = this.state;
 
 		return (

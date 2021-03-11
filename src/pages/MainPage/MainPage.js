@@ -3,7 +3,6 @@ import { withAuth } from "./../../context/auth-context";
 import { Redirect } from "react-router-dom";
 import AlertButton from "./../../components/AlertButton/AlertButton";
 import Authform from "./../../components/Authform/Authform";
-import AlertUser from "./../AlertUser/AlertUser";
 
 class MainPage extends React.Component {
   async componentDidMount() {
