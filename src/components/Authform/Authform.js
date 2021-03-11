@@ -5,11 +5,14 @@ import Signup from './Signup/Signup'
 import Login from './Login/Login'
 
 class Authform extends Component {
-  state = {
-    showSignupForm: false,
-    showLoginFrom: false,
-    back: false
-  }
+	constructor (props) {
+		super(props)
+		this.state = {
+			showSignupForm: false,
+			showLoginFrom: false,
+			back: false
+		}
+	}
 
   handleSignUpBtn = () => {
     this.setState({
@@ -25,8 +28,6 @@ class Authform extends Component {
     })
   } 
   
-  
-
   render() {
     return (
 			<div className='authform'>

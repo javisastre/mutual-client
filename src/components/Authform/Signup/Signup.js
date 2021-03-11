@@ -3,7 +3,10 @@ import { withAuth } from "../../../context/auth-context";
 import "./Signup.css";
 
 class Signup extends Component {
-  state = { username: "", email: "", password: "" };
+  constructor(props) {
+    super(props)
+    this.state = { username: "", email: "", password: "" };
+  }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
@@ -59,6 +62,3 @@ class Signup extends Component {
 }
 
 export default withAuth(Signup);
-
-// const EnhancedSignup = withAuth(Signup)
-// export default EnhancedSignup;

@@ -5,10 +5,13 @@ const { Consumer, Provider } = React.createContext();
 
 
 class AuthProvider extends React.Component {
-  state = {
-    isLoggedIn: false,
-    isLoading: true,
-    user: null
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoggedIn: false,
+      isLoading: true,
+      user: null
+    }
   }
 
   me = () => {

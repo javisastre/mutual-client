@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { withAuth } from "./../../../context/auth-context";
 
 class Login extends Component {
-  state = { username: "", password: "" };
+  constructor(props) {
+    super(props)
+    this.state = { username: "", password: "" };
+  }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state;
-    // Call function coming from AuthProvider ( via withAuth )
     this.props.login(username, password);
   };
 

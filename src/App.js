@@ -16,29 +16,25 @@ import Navbar from "./components/Navbar/Navbar";
 // import AnonRoute from "./components/AnonRoute/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
-class App extends Component {
-  state = { user: {} };
+function App () {
+  return (
+    <div className='container'>
+      <Navbar />
+      <Switch>
+        <Route exact path='/' component={MainPage} />
+        <PrivateRoute exact path='/nets' component={Netsform} />
+        <PrivateRoute exact path='/heatmap' component={HeatMap} />
+        <PrivateRoute exact path='/alerts' component={AlertList} />
+        <PrivateRoute exact path='/profile' component={Profile} />
 
-  render() {
-    return (
-      <div className='container'>
-        <Navbar />
-        <Switch>
-          <Route exact path='/' component={MainPage} />
-          <PrivateRoute exact path='/nets' component={Netsform} />
-          <PrivateRoute exact path='/heatmap' component={HeatMap} />
-          <PrivateRoute exact path='/alerts' component={AlertList} />
-          <PrivateRoute exact path='/profile' component={Profile} />
-
-          <PrivateRoute
-            exact
-            path='/alerts/map/:alertId'
-            component={AlertMap}
-          />
-        </Switch>
-      </div>
-    );
-  }
+        <PrivateRoute
+          exact
+          path='/alerts/map/:alertId'
+          component={AlertMap}
+        />
+      </Switch>
+    </div>
+  );
 }
 
 export default withAuth(App);

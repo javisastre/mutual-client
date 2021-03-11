@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./AlertButton.css";
 
 import { withAuth } from "./../../context/auth-context";
@@ -8,11 +8,6 @@ import AlertService from "./../../services/alert-service";
 function AlertButton (props) {
    const handleClick = async () => {
 
-    //     const locationArray = []
-    //     navigator.geolocation.getCurrentPosition( (position) => {
-    //     locationArray.push(position.coords.latitude)
-    //     locationArray.push(position.coords.longitude);
-    // })
     const locationArray = [2.1901371017810924, 41.397680267661016]
     await AlertService.create(locationArray);
     await props.me();    
