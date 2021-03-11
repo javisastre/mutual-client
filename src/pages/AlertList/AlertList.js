@@ -17,44 +17,53 @@ class Alerts extends Component {
     });
 
     const allUsers = await userService.findAllUsers();
-    const peopleArray = allUsers.filter((user) => {
-      if (peopleIdArray.includes(user._id)) {
-        return true;
-      } else {
-        return false;
-      }
-    });
+    
+if(allUsers=== undefined) {
+  return
+} else {
 
-    const commonNets = [];
-    peopleArray.forEach((person, index) => {
-      let netString = "";
-
-      person.nets.forEach((personNet) => {
-        this.props.user.nets.forEach((meNet) => {
-          if (String(personNet) === String(meNet._id)) {
-            netString += meNet.netname + " ";
-          }
-        });
+  
+  const peopleArray = allUsers.filter((user) => {
+    if (peopleIdArray.includes(user._id)) {
+      return true;
+    } else {
+      return false;
+    }
+  });
+  
+  console.log("peopleArray in line 28", peopleArray)
+  
+  const commonNets = [];
+  peopleArray.forEach((person, index) => {
+    let netString = "";
+    
+    person.nets.forEach((personNet) => {
+      this.props.user.nets.forEach((meNet) => {
+        if (String(personNet) === String(meNet._id)) {
+          netString += meNet.netname + " ";
+        }
       });
-      commonNets.push(netString.trim());
     });
-
-    const alertArray = [];
-    this.props.user.netAlerts.forEach((alert, index) => {
-      const user = {};
-      user["alertId"] = alert._id;
-      user["name"] = peopleArray[index].username;
-      user["nets"] = commonNets[index];
-      user["date"] = alert.date;
-      user["hour"] = alert.hour;
-      alertArray.push(user);
-    });
-
-    this.setState({ alertArray });
-  }
+    commonNets.push(netString.trim());
+  });
+  
+  const alertArray = [];
+  this.props.user.netAlerts.forEach((alert, index) => {
+    const user = {};
+    user["alertId"] = alert._id;
+    user["name"] = peopleArray[index].username;
+    user["nets"] = commonNets[index];
+    user["date"] = alert.date;
+    user["hour"] = alert.hour;
+    alertArray.push(user);
+  });
+  
+  this.setState({ alertArray });
+} 
+}
 
   render() {
-    if (!this.state.alertArray.length === 0) {
+    if (this.state.alertArray.length === 0) {
       return <h4>You have no alerts</h4>;
     } else {
       return (

@@ -2,17 +2,30 @@ import React from "react";
 import { withAuth } from "./../../context/auth-context";
 import { Redirect } from "react-router-dom";
 import AlertButton from "./../../components/AlertButton/AlertButton";
+import AlertUser from "./../../pages/AlertUser/AlertUser"
 import Authform from "./../../components/Authform/Authform";
 
 class MainPage extends React.Component {
+  state = {
+    hasAlert: false
+  }
   async componentDidMount() {
-    await this.getuserData();
+
+    await this.props.me();    
+    if (this.props.user && this.props.user.userAlert ) {
+      this.setState( {hasAlert: true} )
+    }
   }
 
-  getuserData = async () => {
-    await this.props.me();
-  };
+  
+  deactivateAlert = () => {
+    this.setState({hasAlert: false})
+  }
 
+  activateAlert = () => {
+    this.setState({hasAlert: true})
+  }
+  
   render() {
     return (
       <div>
@@ -22,11 +35,11 @@ class MainPage extends React.Component {
           <Redirect to='/nets' />
         ) : null}
 
-        {this.props.isLoggedIn && this.props.user.nets.length > 0 ? (
-          <AlertButton />
-        ) : null}
-
-        {/* {this.props.user.userAlert ? <AlertUser />: null} */}
+        {this.props.isLoggedIn && this.props.user.nets.length > 0 
+          ? this.state.hasAlert
+            ? <AlertUser deactivateAlert={this.deactivateAlert} />
+            : <AlertButton  activateAlert={this.activateAlert} />          
+         : null}
       </div>
     );
   }

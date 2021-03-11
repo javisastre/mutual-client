@@ -8,7 +8,6 @@ import MainPage from "./pages/MainPage/MainPage";
 import HeatMap from "./pages/HeatMap/HeatMap";
 import AlertList from "./pages/AlertList/AlertList";
 import Profile from "./pages/Profile/Profile";
-import AlertUser from "./pages/AlertUser/AlertUser";
 import Netsform from "./pages/Netsform/Netsform";
 import AlertMap from "./pages/AlertMap/AlertMap";
 
@@ -30,7 +29,6 @@ class App extends Component {
           <PrivateRoute exact path='/heatmap' component={HeatMap} />
           <PrivateRoute exact path='/alerts' component={AlertList} />
           <PrivateRoute exact path='/profile' component={Profile} />
-          <PrivateRoute exact path='/alerts/:alertId' component={AlertUser} />
 
           <PrivateRoute
             exact

@@ -20,7 +20,7 @@ function Menu(props) {
         </Link>
         <Link to='/profile'>
           <button className='menu-button' onClick={props.toggle}>
-            Manage Nets
+            Net List
           </button>
         </Link>
         <Link to='/heatmap'>

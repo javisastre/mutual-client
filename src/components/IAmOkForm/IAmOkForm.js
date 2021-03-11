@@ -5,20 +5,24 @@ import { withAuth } from './../../context/auth-context'
 import alertService from './../../services/alert-service'
 
 class IAmOkForm extends Component {
-  state = {
-    alertpublic: "",
-    alertcategory: "",
-    alertstory: "",
-    alertId: "",
-    publicBoolean: false,
-    category: {
-      gender: false,
-      sexualorientation: false,
-      race: false,
-      ideology: false,
-      religion: false,
-      others: false,
-    },
+  
+  constructor (props) {
+    super(props) 
+    this.state = {
+      alertpublic: "",
+      alertcategory: "",
+      alertstory: "",
+      alertId: "",
+      publicBoolean: false,
+      category: {
+        gender: false,
+        sexualorientation: false,
+        race: false,
+        ideology: false,
+        religion: false,
+        others: false,
+      },
+  }
   };
 
   handleInputChange = (event) => {
@@ -32,10 +36,11 @@ class IAmOkForm extends Component {
   };
 
   componentDidMount() {
-    this.setState({ alertId: this.props.alertData._id, redirect: false });
+    this.setState({ alertId: this.props.user.userAlert._id });
   }
 
-  handleFormSubmit = async (event) => {
+  handleFormSubmit = (event) => {
+    
     event.preventDefault();
 
     const { publicBoolean, alertstory, category } = this.state;
@@ -57,12 +62,7 @@ class IAmOkForm extends Component {
     
     if (!publicBoolean) alertService.delete(this.state.alertId)
 
-    this.props.me()
-
-    this.props.me();
-    console.log("this should update the user data");
-
-    this.props.history.push("/heatmap");
+    this.props.deactivateAlert()
   };
 
   handleChange = (event) => {
@@ -77,10 +77,6 @@ class IAmOkForm extends Component {
       this.setState({ publicBoolean: true });
     }
   };
-
-  async componentWillUnmount() {
-    await this.props.me();
-  }
 
   render() {
     return (
