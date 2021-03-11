@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import './IAmOkForm.css'
-import { withRouter, Redirect, Link } from 'react-router-dom'
-import { withAuth } from './../../context/auth-context'
-import alertService from './../../services/alert-service'
+import "./IAmOkForm.css";
+import { withRouter } from "react-router-dom";
+import { withAuth } from "./../../context/auth-context";
+import alertService from "./../../services/alert-service";
 
 class IAmOkForm extends Component {
   state = {
-    alertpublic: '',
-    alertcategory: '',
-    alertstory: '',
-    alertId: '',
+    alertpublic: "",
+    alertcategory: "",
+    alertstory: "",
+    alertId: "",
     publicBoolean: false,
     category: {
       gender: false,
@@ -25,22 +25,21 @@ class IAmOkForm extends Component {
     const value = event.target.checked;
     const name = event.target.name;
 
-    const updatedCategory = this.state.category
-    updatedCategory[name] = value
+    const updatedCategory = this.state.category;
+    updatedCategory[name] = value;
 
     this.setState({ category: updatedCategory });
-  }
+  };
 
   componentDidMount() {
     this.setState({ alertId: this.props.alertData._id, redirect: false });
   }
 
   handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-    event.preventDefault()
-    
-    const { publicBoolean, alertstory, category } = this.state
-    const publicAlert = publicBoolean
+    const { publicBoolean, alertstory, category } = this.state;
+    const publicAlert = publicBoolean;
 
     const categoryArray = [];
     for (let item in category) {
@@ -51,19 +50,19 @@ class IAmOkForm extends Component {
       alertId: this.state.alertId,
       publish: publicAlert,
       category: categoryArray,
-      story: alertstory
-    }
+      story: alertstory,
+    };
 
-    if (publicBoolean) alertService.archive(objectForUpdate)
-    console.log("this should archive the alert")
-    
-    if (!publicBoolean) alertService.delete(this.state.alertId)
-    console.log("this should delete the alert ")
+    if (publicBoolean) alertService.archive(objectForUpdate);
+    console.log("this should archive the alert");
 
-    this.props.me()
-    console.log("this should update the user data")
+    if (!publicBoolean) alertService.delete(this.state.alertId);
+    console.log("this should delete the alert ");
 
-    this.props.history.push("/heatmap")
+    this.props.me();
+    console.log("this should update the user data");
+
+    this.props.history.push("/heatmap");
   };
 
   handleChange = (event) => {
@@ -80,17 +79,16 @@ class IAmOkForm extends Component {
   };
 
   async componentWillUnmount() {
-    await this.props.me()
+    await this.props.me();
   }
 
   render() {
-  
     return (
       <div>
-        <h1 className="alerth1">Finished Alert</h1>
+        <h1 className='alerth1'>Finished Alert</h1>
 
         <form className='iamokform iamokflex' onSubmit={this.handleFormSubmit}>
-          <div className="yesorno iamokflex">
+          <div className='yesorno iamokflex'>
             <label>
               Do you want this alert’s information to go public anonymously?
             </label>
@@ -102,72 +100,69 @@ class IAmOkForm extends Component {
           </div>
 
           {this.state.publicBoolean ? (
-            
-            <div className="conditionalform">
-
-              <div className="checkboxes">
-                <h4>Please classify the type of discrimination</h4> 
+            <div className='conditionalform'>
+              <div className='checkboxes'>
+                <h4>Please classify the type of discrimination</h4>
 
                 <label>
-                  <input 
+                  <input
                     name='gender'
-                    type='checkbox' 
+                    type='checkbox'
                     checked={this.state.gender}
                     onChange={this.handleInputChange}
-                  
                   />
                   Gender
                 </label>
                 <label>
-                  <input 
+                  <input
                     name='sexualorientation'
-                    type='checkbox' 
+                    type='checkbox'
                     checked={this.state.sexualorientation}
                     onChange={this.handleInputChange}
                   />
                   Sexual Orientation
                 </label>
                 <label>
-                  <input 
+                  <input
                     name='race'
-                    type='checkbox' 
+                    type='checkbox'
                     checked={this.state.race}
                     onChange={this.handleInputChange}
                   />
                   Race
                 </label>
                 <label>
-                  <input 
+                  <input
                     name='ideology'
-                    type='checkbox' 
+                    type='checkbox'
                     checked={this.state.ideology}
                     onChange={this.handleInputChange}
                   />
                   Ideology
                 </label>
                 <label>
-                  <input 
+                  <input
                     name='religion'
-                    type='checkbox' 
+                    type='checkbox'
                     checked={this.state.religion}
                     onChange={this.handleInputChange}
                   />
                   Religion
                 </label>
                 <label>
-                <input 
-                  name='others'
-                  type='checkbox' 
-                  checked={this.state.other}
-                  onChange={this.handleInputChange}
-                />
-                Other
-              </label>
+                  <input
+                    name='others'
+                    type='checkbox'
+                    checked={this.state.other}
+                    onChange={this.handleInputChange}
+                  />
+                  Other
+                </label>
               </div>
-              
-              <h4>Would you like to share your story?</h4> 
+
+              <h4>Would you like to share your story?</h4>
               <textarea
-                name='alertstory'                
+                name='alertstory'
                 className='alertstory'
                 value={this.state.alertstory}
                 onChange={this.handleChange}
@@ -176,7 +171,7 @@ class IAmOkForm extends Component {
             </div>
           ) : null}
 
-            <button type='submit'>Send Alert Info</button>
+          <button type='submit'>Send Alert Info</button>
         </form>
       </div>
     );

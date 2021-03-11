@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { withAuth } from "../../context/auth-context";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AlertService from "../../services/alert-service";
 import IAmOkForm from "../../components/IAmOkForm/IAmOkForm";
 import "./AlertUser.css";
 
 class AlertUser extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       alert: {},
       iAmOk: false,
-      sent: null
+      sent: null,
     };
   }
 
@@ -29,6 +29,7 @@ class AlertUser extends Component {
 
   handleCancelBtn = async () => {
     await AlertService.delete(this.state.alert._id);
+    await this.props.me();
   };
 
   handleFineBtn = async () => {
@@ -37,14 +38,14 @@ class AlertUser extends Component {
   };
 
   async componentWillUnmount() {
-    await this.props.me()
+    await this.props.me();
   }
 
   render() {
     const alertScreen = (
       <div className='user-alert'>
         <div className='content'>
-          <span class='dot'></span>
+          <span className='dot'></span>
           <h4>Alert sent at:</h4>
           <h2>{this.state.alert.hour}</h2>
           <h2>{this.state.alert.date}</h2>

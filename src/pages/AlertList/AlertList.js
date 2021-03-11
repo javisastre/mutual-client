@@ -18,7 +18,9 @@ class Alerts extends Component {
     const allUsers = await userService.findAllUsers();
     const peopleArray = allUsers.filter((user) => {
       if (peopleIdArray.includes(user._id)) {
-        return user;
+        return true;
+      } else {
+        return false;
       }
     });
 

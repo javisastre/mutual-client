@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withAuth } from "./../../context/auth-context";
 import netService from "./../../services/net-service";
 
 class Profile extends Component {
-  constructor (props) {
-    super()
+  constructor(props) {
+    super();
     this.state = {
-      nets: []
-    }
+      nets: [],
+    };
   }
 
   async componentDidMount() {
@@ -23,18 +23,18 @@ class Profile extends Component {
   };
 
   render() {
-    console.log("this.props in profile", this.props)
+    console.log("this.props in profile", this.props);
     if (this.props.user.nets.length === 0) {
       return (
         <div>
           <h1>You are not in any net</h1>
-          <Link to="/nets">
+          <Link to='/nets'>
             <button>Join or Create</button>
           </Link>
         </div>
-      )
+      );
     } else if (Object.keys(this.props.user.nets[0]).length === 24) {
-      return <p>Loading...</p>
+      return <p>Loading...</p>;
     } else {
       return (
         <div>
@@ -52,7 +52,7 @@ class Profile extends Component {
             <button>Join or Create a Net</button>
           </Link>
         </div>
-      )
+      );
     }
   }
 }
