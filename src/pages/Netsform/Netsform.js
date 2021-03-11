@@ -11,16 +11,7 @@ class Netsform extends Component {
     this.state = {
       showCreateNet: false,
       showJoinNet: false,
-      redirect: null,
     };
-  }
-
-  goBack = async (input) => {
-    const updatedUser = await this.props.me();
-
-    await this.props.me()
-
-    this.setState( { redirect: input})
   }
 
   handleCreateBtn = () => {
@@ -38,11 +29,14 @@ class Netsform extends Component {
   };
 
   render() {
-    //if (this.state.redirect) return <Redirect to="/profile" />
-
     return (
       <div className='authform'>
-        <h4>You are not part of any net yet</h4>
+        {this.props.user && this.props.user.nets === 0 ? (
+          <h4>You are not part of any net yet</h4>
+        ) : (
+          <h4>Create or join a net</h4>
+        )}
+
         {this.state.showCreateNet === false &&
         this.state.showJoinNet === false ? (
           <div className='authbuttons'>
@@ -53,7 +47,7 @@ class Netsform extends Component {
 
         {this.state.showCreateNet ? (
           <>
-            <CreateNet back={this.goBack} />
+            <CreateNet />
             <button className='alreadymember' onClick={this.handleJoinBtn}>
               Want to join a net?
             </button>
