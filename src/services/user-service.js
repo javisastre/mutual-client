@@ -16,7 +16,10 @@ class UserService {
   }
 
   findAllUsers() {
-    const pr = this.user.get("/all").then((response) => response.data);
+    const pr = this.user
+      .get("/all")
+      .then((response) => response.data)
+      .catch((err) => err);
     return pr;
   }
 }
