@@ -33,3 +33,10 @@
 .joinorcreatebtn {
   margin: 8vh 2.5vh;
 }
+
+.empty-net-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
