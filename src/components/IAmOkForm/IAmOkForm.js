@@ -4,8 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { withAuth } from './../../context/auth-context'
 import alertService from './../../services/alert-service'
 
-class IAmOkForm extends Component {
-  
+class IAmOkForm extends Component {  
   constructor (props) {
     super(props) 
     this.state = {
@@ -28,10 +27,8 @@ class IAmOkForm extends Component {
   handleInputChange = (event) => {
     const value = event.target.checked;
     const name = event.target.name;
-
     const updatedCategory = this.state.category;
     updatedCategory[name] = value;
-
     this.setState({ category: updatedCategory });
   };
 
@@ -40,12 +37,9 @@ class IAmOkForm extends Component {
   }
 
   handleFormSubmit = (event) => {
-    
     event.preventDefault();
-
     const { publicBoolean, alertstory, category } = this.state;
     const publicAlert = publicBoolean;
-
     const categoryArray = [];
     for (let item in category) {
       if (category[item]) categoryArray.push(item);
@@ -58,10 +52,9 @@ class IAmOkForm extends Component {
       story: alertstory,
     };
 
-    if (publicBoolean) alertService.archive(objectForUpdate)
-    
+    if (publicBoolean) alertService.archive(objectForUpdate)    
     if (!publicBoolean) alertService.delete(this.state.alertId)
-
+    
     this.props.deactivateAlert()
   };
 

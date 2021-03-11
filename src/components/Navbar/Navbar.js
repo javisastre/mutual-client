@@ -5,9 +5,12 @@ import "./Navbar.css";
 import Menu from "./Menu";
 
 class Navbar extends Component {
-  state = {
-    displayMenu: undefined,
-  };
+  constructor(props) {
+    super(props)
+    this.state = {
+      displayMenu: undefined,
+    };
+  }
 
   componentDidMount() {
     this.setState({ displayMenu: false });
@@ -33,8 +36,7 @@ class Navbar extends Component {
                     {this.props.user && this.props.user.username}
                   </p>
                 </Link>
-                {/* TODO Fix username to center of menu screen */}
-                <span style={{ width: "width: 4.4vh" }}></span>
+                <span style={{ width: "width: 4.3vh" }}></span>
               </>
             ) : (
               <>

@@ -31,7 +31,7 @@ class Netsform extends Component {
   render() {
     return (
       <div className='authform'>
-        {this.props.user && this.props.user.nets === 0 ? (
+        {this.props.user && this.props.user.nets.length === 0 ? (
           <h4>You are not part of any net yet</h4>
         ) : (
           <h4>Create or join a net</h4>
