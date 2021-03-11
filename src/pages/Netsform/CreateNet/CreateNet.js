@@ -1,73 +1,70 @@
 import React, { Component } from "react";
 
-import netService from "../../../services/net-service"
+import netService from "../../../services/net-service";
 
 import { withAuth } from "../../../context/auth-context";
-import { withRouter } from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 
 class CreateNet extends Component {
-	constructor(props) {
-		super(props)
-		this.state = { 
-			netname: "", 
-			netcode: "",
-		};
-	}
+  constructor(props) {
+    super(props);
+    this.state = {
+      netname: "",
+      netcode: "",
+    };
+  }
 
-	updateUserData = () => {
-		this.props.me()
-	}
+  handleFormSubmit = async (event) => {
+    try {
+      event.preventDefault();
 
-	handleFormSubmit = async (event) => {
-		event.preventDefault();
-		
-		const { netname, netcode } = this.state;
-		
-    await netService.create(netname, netcode)
-    
-		
-		this.updateUserData()
-		
-		
-		this.setState( { netname: "", netcode: "" } );
-		
-		this.props.history.push("/profile")
-	};
+      const { netname, netcode } = this.state;
+      await netService.create(netname, netcode);
 
-	handleChange = (event) => {
-		const { name, value } = event.target;
-		this.setState({ [name]: value });
-	};
+      await this.props.me();
 
-	render() {
-		const { netname, netcode } = this.state;
+      this.setState({ netname: "", netcode: "" });
 
-		return (
-			<div>
-				<h1>Create a Net</h1>
+      this.props.history.push("/profile");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-				<form className='formInputs' onSubmit={this.handleFormSubmit}>
-					<input
-						type='text'
-						name='netname'
-						value={netname}
-						onChange={this.handleChange}
-						placeholder='Net name'
-					/>
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
-					<input
-						type='password'
-						name='netcode'
-						value={netcode}
-						onChange={this.handleChange}
-						placeholder='Net code'
-					/>
+  render() {
+    const { netname, netcode } = this.state;
 
-					<button type='submit'>Create</button>
-				</form>
-			</div>
-		);
-	}
+    return (
+      <div>
+        <h1>Create a Net</h1>
+
+        <form className='formInputs' onSubmit={this.handleFormSubmit}>
+          <input
+            type='text'
+            name='netname'
+            value={netname}
+            onChange={this.handleChange}
+            placeholder='Net name'
+          />
+
+          <input
+            type='password'
+            name='netcode'
+            value={netcode}
+            onChange={this.handleChange}
+            placeholder='Net code'
+          />
+
+          <button type='submit'>Create</button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default withRouter(withAuth(CreateNet));

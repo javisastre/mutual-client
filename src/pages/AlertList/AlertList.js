@@ -10,50 +10,52 @@ class Alerts extends Component {
   };
 
   async componentDidMount() {
-    await this.props.me();
+    try {
+      await this.props.me();
 
-    const peopleIdArray = this.props.user.netAlerts.map((alert) => {
-      return alert.person;
-    });
-
-    const allUsers = await userService.findAllUsers();
-
-    const peopleArray = allUsers.filter((user) => {
-      if (peopleIdArray.includes(user._id)) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-
-    console.log("peopleArray", peopleArray);
-
-    const commonNets = [];
-    peopleArray.forEach((person, index) => {
-      let netString = "";
-
-      person.nets.forEach((personNet) => {
-        this.props.user.nets.forEach((meNet) => {
-          if (String(personNet) === String(meNet._id)) {
-            netString += meNet.netname + " ";
-          }
-        });
+      const peopleIdArray = this.props.user.netAlerts.map((alert) => {
+        return alert.person;
       });
-      commonNets.push(netString.trim());
-    });
 
-    const alertArray = [];
-    this.props.user.netAlerts.forEach((alert, index) => {
-      const user = {};
-      user["alertId"] = alert._id;
-      user["name"] = peopleArray[index].username;
-      user["nets"] = commonNets[index];
-      user["date"] = alert.date;
-      user["hour"] = alert.hour;
-      alertArray.push(user);
-    });
+      const allUsers = await userService.findAllUsers();
 
-    this.setState({ alertArray });
+      const peopleArray = allUsers.filter((user) => {
+        if (peopleIdArray.includes(user._id)) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+
+      const commonNets = [];
+      peopleArray.forEach((person, index) => {
+        let netString = "";
+
+        person.nets.forEach((personNet) => {
+          this.props.user.nets.forEach((meNet) => {
+            if (String(personNet) === String(meNet._id)) {
+              netString += meNet.netname + " ";
+            }
+          });
+        });
+        commonNets.push(netString.trim());
+      });
+
+      const alertArray = [];
+      this.props.user.netAlerts.forEach((alert, index) => {
+        const user = {};
+        user["alertId"] = alert._id;
+        user["name"] = peopleArray[index].username;
+        user["nets"] = commonNets[index];
+        user["date"] = alert.date;
+        user["hour"] = alert.hour;
+        alertArray.push(user);
+      });
+
+      this.setState({ alertArray });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {

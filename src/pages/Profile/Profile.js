@@ -13,14 +13,22 @@ class Profile extends Component {
   }
 
   async componentDidMount() {
-    await this.props.me();
-    this.setState({ nets: this.props.user.nets });
+    try {
+      await this.props.me();
+      this.setState({ nets: this.props.user.nets });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   handleLeave = async (netId) => {
-    await netService.leave(netId);
-    await this.props.me();
-    this.setState({ nets: this.props.user.nets });
+    try {
+      await netService.leave(netId);
+      await this.props.me();
+      this.setState({ nets: this.props.user.nets });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
