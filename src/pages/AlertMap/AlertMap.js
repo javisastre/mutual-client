@@ -67,7 +67,7 @@ class AlertMap extends Component {
   render() {
     return (
       <div>
-        <div ref={this.mapContainer} className='map-container' />
+        <div ref={this.mapContainer} className='map-container' id="single-alert-map"/>
       {this.state.alert 
       ? <div className="alert-user-info">
         <Link to='/alerts'>

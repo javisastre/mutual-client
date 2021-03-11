@@ -17,10 +17,16 @@ class AlertButton extends Component {
 
   handleClick = async () => {
 
-    //TODO DYNAMIC GEOLOCATION HERE
+    //     const locationArray = []
+    //     navigator.geolocation.getCurrentPosition( (position) => {
+    //     locationArray.push(position.coords.latitude)
+    //     locationArray.push(position.coords.longitude);
+    // })
 
     const locationArray = [2.1901371017810924, 41.397680267661016]
+    
     const createdAlert = await AlertService.create(locationArray);
+
     await this.props.me();
     const alertId = createdAlert._id;
     this.setState({ alertsent: true, alertId });

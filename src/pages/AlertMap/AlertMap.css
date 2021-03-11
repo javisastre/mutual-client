@@ -53,3 +53,10 @@
 .alert-bar-text > p {
   margin: 1vw;
 }
+
+#single-alert-map > .mapboxgl-canvas-container > .mapboxgl-marker {
+  padding: 15vh;
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 50%;
+}
