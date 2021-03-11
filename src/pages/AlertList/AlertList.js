@@ -60,7 +60,7 @@ class Alerts extends Component {
 
   render() {
     if (this.state.alertArray.length === 0) {
-      return <h4>You have no alerts</h4>;
+      return <h1>You have no alerts</h1>;
     } else {
       return (
         <div className='alert-list-container'>
