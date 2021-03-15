@@ -34,7 +34,7 @@ class Profile extends Component {
   render() {
     if (this.props.user.nets.length === 0) {
       return (
-        <div>
+        <div className="empty-net-list">
           <h1>You are not in any net</h1>
           <Link to='/nets'>
             <button>Join or Create</button>
